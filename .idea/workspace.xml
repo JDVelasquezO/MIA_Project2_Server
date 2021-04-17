@@ -11,6 +11,8 @@
       <change afterPath="$PROJECT_DIR$/client/src/pages/Auth/Home.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/src/pages/Auth/Login.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/src/pages/Auth/Welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client" beforeDir="false" afterPath="$PROJECT_DIR$/client" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.test.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
@@ -29,7 +31,7 @@
   </component>
   <component name="GOROOT" url="file:///snap/go/7360" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1rFQKuBSjqh35D8IaDNpm1hl6IN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
