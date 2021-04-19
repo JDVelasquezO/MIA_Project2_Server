@@ -10,44 +10,34 @@ import (
 	"time"
 )
 
-func Register (c *fiber.Ctx) error {
+func Register(c *fiber.Ctx) error {
 	var data map[string]string // key: value
 	e := c.BodyParser(&data)
 	if e != nil {
 		return e
 	}
 
-	IdRole, _:= strconv.Atoi(data["idRole"])
+	IdRole, _ := strconv.Atoi(data["idRole"])
 	user := models.User{
 		Username:     data["username"],
-		Email:    data["email"],
-		Password: data["pass"],
-		First: data["first"],
-		Last: data["last"],
-		DateBirth: data["birth"],
+		Email:        data["email"],
+		Password:     data["pass"],
+		First:        data["first"],
+		Last:         data["last"],
+		DateBirth:    data["birth"],
 		DateRegister: data["register"],
-		PathPhoto: data["photo"],
-		IdRol: IdRole,
+		PathPhoto:    data["photo"],
+		IdRol:        IdRole,
 	}
 
 	if user.PathPhoto == "" {
 		user.PathPhoto = "https://i.pinimg.com/originals/e5/0e/30/e50e3015eb9d4fb800bac9c53815e1f6.png"
 	}
 
-	/*res, _ := database.DB.Query("SELECT COUNT(*) FROM TEST.USERS")
-	for res.Next() {
-		var data int
-		err := res.Scan(&data)
-		if err != nil {
-			return err
-		}
-		user.Id = data + 1
-	}*/
-
 	query := "INSERT INTO TEST.USERS (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, DATE_BIRTH," +
 		"DATE_REGISTER, EMAIL, PATH_PHOTO, FK_IDROLE) VALUES ('" + user.Username +
-		"', '" + user.Password + "', '" + user.First + "', '"+user.Last+"', TO_DATE('"+user.DateBirth+"', 'yyyy/mm/dd')," +
-		"TO_DATE('"+user.DateRegister+"', 'yyyy/mm/dd'), '"+user.Email+"', '"+user.PathPhoto+"', 4)"
+		"', '" + user.Password + "', '" + user.First + "', '" + user.Last + "', TO_DATE('" + user.DateBirth + "', 'yyyy/mm/dd')," +
+		"TO_DATE('" + user.DateRegister + "', 'yyyy/mm/dd'), '" + user.Email + "', '" + user.PathPhoto + "', 4)"
 	_, err := database.DB.Query(query)
 	if err != nil {
 		fmt.Println("Error en la consulta")
@@ -69,7 +59,7 @@ func Login(c *fiber.Ctx) error {
 	user.Email = data["email"]
 	user.Password = data["pass"]
 	rows, err := database.DB.Query("SELECT ID_USER, USERNAME " +
-		"FROM TEST.USERS WHERE EMAIL = '"+user.Email+"' AND PASSWORD = '"+user.Password+"'")
+		"FROM TEST.USERS WHERE EMAIL = '" + user.Email + "' AND PASSWORD = '" + user.Password + "'")
 	if err != nil {
 		log.Fatal("Error en la consulta")
 		return err
@@ -86,24 +76,26 @@ func Login(c *fiber.Ctx) error {
 		user.Username = username
 	}
 
-	cookie := fiber.Cookie{
-		Name: "user",
-		Value: strconv.Itoa(user.Id),
-		Expires: time.Now().Add(time.Hour*24), // 1 Día
-		HTTPOnly: true,
+	if user.Id != 0 {
+		cookie := fiber.Cookie{
+			Name:     "user",
+			Value:    strconv.Itoa(user.Id),
+			Expires:  time.Now().Add(time.Hour * 24), // 1 Día
+			HTTPOnly: true,
+		}
+		c.Cookie(&cookie)
 	}
-	c.Cookie(&cookie)
 
 	return c.JSON(user)
 }
 
-func User (c *fiber.Ctx) error {
+func User(c *fiber.Ctx) error {
 	cookie := c.Cookies("user")
 	id, _ := strconv.Atoi(cookie)
 
 	rows, err := database.DB.Query("SELECT USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, " +
 		"DATE_BIRTH, DATE_REGISTER, EMAIL, PATH_PHOTO, FK_IDROLE " +
-		"FROM TEST.USERS WHERE ID_USER = '"+cookie+"' ")
+		"FROM TEST.USERS WHERE ID_USER = '" + cookie + "' ")
 	if err != nil {
 		fmt.Println("Error en la consulta")
 		log.Fatal(err)
@@ -147,11 +139,11 @@ func User (c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
-func Logout (c *fiber.Ctx) error {
+func Logout(c *fiber.Ctx) error {
 	cookie := fiber.Cookie{ // Eliminamos la cookie
-		Name: "user",
-		Value: "",
-		Expires: time.Now().Add(-time.Hour),
+		Name:     "user",
+		Value:    "",
+		Expires:  time.Now().Add(-time.Hour),
 		HTTPOnly: true,
 	}
 
