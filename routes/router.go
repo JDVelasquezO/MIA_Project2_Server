@@ -5,9 +5,13 @@ import (
 	"server/controllers"
 )
 
-func Setup(app *fiber.App)  {
+func Setup(app *fiber.App) {
+	// Routes of auth
 	app.Post("/quinielas.io/register", controllers.Register)
 	app.Post("/quinielas.io/login", controllers.Login)
 	app.Get("/quinielas.io/user", controllers.User)
 	app.Post("/quinielas.io/logout", controllers.Logout)
+
+	// Routes of auth
+	app.Get("/quinielas.io/membership", controllers.GetStatusMembership)
 }

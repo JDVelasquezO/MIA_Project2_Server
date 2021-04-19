@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e557b7cf-3111-46f9-8b31-49803bc1f633" name="Default Changelist" comment="">
+    <list default="true" id="e557b7cf-3111-46f9-8b31-49803bc1f633" name="Default Changelist" comment="Uoloading files">
+      <change afterPath="$PROJECT_DIR$/controllers/membershipController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/membership.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +25,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1rFQKuBSjqh35D8IaDNpm1hl6IN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,7 +42,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../login_register" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -69,5 +74,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Uoloading files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Uoloading files" />
   </component>
 </project>

@@ -110,9 +110,9 @@
     <schema id="35" parent="1" name="TEST">
       <ObjectId>102</ObjectId>
       <CreatedTimestamp>2021-04-13.20:28:50</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-17.02:10:07</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <IntrospectionTimestamp>2021-04-17.08:17:44</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-04-19.11:16:47</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="36" parent="1" name="WMSYS">
@@ -49607,42 +49607,134 @@
       <SequenceIdentity>1(21)</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <table id="7109" parent="35" name="CLIENT">
+    <table id="7109" parent="35" name="CLASSIFICATION">
+      <ObjectId>74647</ObjectId>
+      <CreatedTimestamp>2021-04-19.04:03:41</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.04:03:41</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7110" parent="35" name="CLIENT">
       <ObjectId>74079</ObjectId>
       <CreatedTimestamp>2021-04-13.20:28:50</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-13.23:04:50</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7110" parent="35" name="ROLE">
+    <table id="7111" parent="35" name="COLOR">
+      <ObjectId>74609</ObjectId>
+      <CreatedTimestamp>2021-04-18.20:15:00</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:15:00</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7112" parent="35" name="EVENT">
+      <ObjectId>74659</ObjectId>
+      <CreatedTimestamp>2021-04-19.07:17:46</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:17:46</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7113" parent="35" name="EVENT_HAS_TEAM">
+      <ObjectId>74661</ObjectId>
+      <CreatedTimestamp>2021-04-19.07:20:48</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7114" parent="35" name="MEMBERSHIP">
+      <ObjectId>74640</ObjectId>
+      <CreatedTimestamp>2021-04-19.03:45:08</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7115" parent="35" name="PREDICTION">
+      <ObjectId>74667</ObjectId>
+      <CreatedTimestamp>2021-04-19.07:30:40</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:30:40</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7116" parent="35" name="PREDICTION_EVENT">
+      <ObjectId>74669</ObjectId>
+      <CreatedTimestamp>2021-04-19.07:38:23</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7117" parent="35" name="ROLE">
       <ObjectId>74361</ObjectId>
       <CreatedTimestamp>2021-04-17.01:38:04</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-17.01:38:04</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="7111" parent="35" name="USERS">
+    <table id="7118" parent="35" name="SPORT">
+      <ObjectId>74611</ObjectId>
+      <CreatedTimestamp>2021-04-18.20:15:35</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:15:35</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7119" parent="35" name="STATUS_EVENT">
+      <ObjectId>74615</ObjectId>
+      <CreatedTimestamp>2021-04-18.20:21:58</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:21:58</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7120" parent="35" name="TEAM">
+      <ObjectId>74613</ObjectId>
+      <CreatedTimestamp>2021-04-18.20:17:22</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:17:22</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7121" parent="35" name="TIER">
+      <ObjectId>74607</ObjectId>
+      <CreatedTimestamp>2021-04-18.20:14:19</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:14:19</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="7122" parent="35" name="USERS">
       <ObjectId>74379</ObjectId>
       <CreatedTimestamp>2021-04-17.02:10:07</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-17.02:10:07</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <column id="7112" parent="7109" name="ID">
+    <column id="7123" parent="7109" name="ID_CLASSIFICATION">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7113" parent="7109" name="NAME">
+    <column id="7124" parent="7109" name="NAME_CLASSIFICATION">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="7125" parent="7109" name="SYS_C007686">
+      <ObjectId>74648</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-19.04:03:41</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.04:03:41</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>ID_CLASSIFICATION</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7126" parent="7109" name="SYS_C007686">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.04:03:41</ModifiedTimestamp>
+      <ColNames>ID_CLASSIFICATION</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007686</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="7127" parent="7110" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7128" parent="7110" name="NAME">
       <Position>2</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7114" parent="7109" name="EMAIL">
+    <column id="7129" parent="7110" name="EMAIL">
       <Position>3</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7115" parent="7109" name="PASSWORD">
+    <column id="7130" parent="7110" name="PASSWORD">
       <Position>4</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <index id="7116" parent="7109" name="SYS_C007363">
+    <index id="7131" parent="7110" name="SYS_C007363">
       <ObjectId>74080</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-13.20:28:50</CreatedTimestamp>
@@ -49651,7 +49743,7 @@
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7117" parent="7109" name="SYS_C007363">
+    <key id="7132" parent="7110" name="SYS_C007363">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-13.20:28:50</ModifiedTimestamp>
       <ColNames>ID</ColNames>
@@ -49659,17 +49751,276 @@
       <UnderlyingIndexName>SYS_C007363</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7118" parent="7110" name="ID_ROLE">
+    <column id="7133" parent="7111" name="ID_COLOR">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7134" parent="7111" name="NAME_COLOR">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="7135" parent="7111" name="SYS_C007614">
+      <ObjectId>74610</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-18.20:15:00</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:15:00</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>ID_COLOR</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7136" parent="7111" name="SYS_C007614">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:15:00</ModifiedTimestamp>
+      <ColNames>ID_COLOR</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007614</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="7137" parent="7112" name="ID_EVENT">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7138" parent="7112" name="DATE_OF_GAME">
+      <Position>2</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="7139" parent="7112" name="FK_IDSTATUSEVENT">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="7140" parent="7112" name="SYS_C007707">
+      <ObjectId>74660</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-19.07:17:46</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:17:46</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>ID_EVENT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7141" parent="7112" name="SYS_C007707">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:17:46</ModifiedTimestamp>
+      <ColNames>ID_EVENT</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007707</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7142" parent="7112" name="SYS_C007708">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:17:46</ModifiedTimestamp>
+      <ColNames>FK_IDSTATUSEVENT</ColNames>
+      <RefTableName>STATUS_EVENT</RefTableName>
+      <RefKeyName>SYS_C007622</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7143" parent="7113" name="FK_IDEVENT">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7144" parent="7113" name="FK_IDTEAM">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7145" parent="7113" name="FK_IDCLASSIFICATION">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7146" parent="7113" name="REAL_RESULT">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="7147" parent="7113" name="SYS_C007712">
+      <ObjectId>74662</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-19.07:20:48</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>FK_IDEVENT
+FK_IDTEAM
+FK_IDCLASSIFICATION</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7148" parent="7113" name="SYS_C007712">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
+      <ColNames>FK_IDEVENT
+FK_IDTEAM
+FK_IDCLASSIFICATION</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007712</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7149" parent="7113" name="SYS_C007713">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
+      <ColNames>FK_IDEVENT</ColNames>
+      <RefTableName>EVENT</RefTableName>
+      <RefKeyName>SYS_C007707</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="7150" parent="7113" name="SYS_C007714">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
+      <ColNames>FK_IDTEAM</ColNames>
+      <RefTableName>TEAM</RefTableName>
+      <RefKeyName>SYS_C007619</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="7151" parent="7113" name="SYS_C007715">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
+      <ColNames>FK_IDCLASSIFICATION</ColNames>
+      <RefTableName>CLASSIFICATION</RefTableName>
+      <RefKeyName>SYS_C007686</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7152" parent="7114" name="ID_MEMBERSHIP">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7153" parent="7114" name="FK_IDUSER">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7154" parent="7114" name="FK_IDTIER">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="7155" parent="7114" name="SYS_C007670">
+      <ObjectId>74641</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-19.03:45:08</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>ID_MEMBERSHIP</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7156" parent="7114" name="SYS_C007670">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
+      <ColNames>ID_MEMBERSHIP</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007670</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7157" parent="7114" name="SYS_C007671">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
+      <ColNames>FK_IDUSER</ColNames>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>SYS_C007435</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="7158" parent="7114" name="SYS_C007672">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
+      <ColNames>FK_IDTIER</ColNames>
+      <RefTableName>TIER</RefTableName>
+      <RefKeyName>SYS_C007612</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7159" parent="7115" name="ID_PREDICTION">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7160" parent="7115" name="USER_RESULT">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <column id="7161" parent="7115" name="FK_IDMEMBERSHIP">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="7162" parent="7115" name="SYS_C007718">
+      <ObjectId>74668</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-19.07:30:40</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:30:40</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>ID_PREDICTION</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7163" parent="7115" name="SYS_C007718">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:30:40</ModifiedTimestamp>
+      <ColNames>ID_PREDICTION</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007718</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7164" parent="7115" name="SYS_C007719">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:30:40</ModifiedTimestamp>
+      <ColNames>FK_IDMEMBERSHIP</ColNames>
+      <RefTableName>MEMBERSHIP</RefTableName>
+      <RefKeyName>SYS_C007670</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7165" parent="7116" name="FK_IDPREDICTION">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7166" parent="7116" name="FK_IDEVENT">
+      <Position>2</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="7167" parent="7116" name="SYS_C007720">
+      <ObjectId>74670</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-19.07:38:23</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>FK_IDEVENT
+FK_IDPREDICTION</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7168" parent="7116" name="SYS_C007720">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
+      <ColNames>FK_IDEVENT
+FK_IDPREDICTION</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007720</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7169" parent="7116" name="SYS_C007721">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
+      <ColNames>FK_IDPREDICTION</ColNames>
+      <RefTableName>PREDICTION</RefTableName>
+      <RefKeyName>SYS_C007718</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="7170" parent="7116" name="SYS_C007722">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
+      <ColNames>FK_IDEVENT</ColNames>
+      <RefTableName>EVENT</RefTableName>
+      <RefKeyName>SYS_C007707</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7171" parent="7117" name="ID_ROLE">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
       <AutoInc>1</AutoInc>
     </column>
-    <column id="7119" parent="7110" name="ROLE_NAME">
+    <column id="7172" parent="7117" name="ROLE_NAME">
       <Position>2</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7120" parent="7110" name="SYS_C007418">
+    <index id="7173" parent="7117" name="SYS_C007418">
       <ObjectId>74363</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-17.01:38:04</CreatedTimestamp>
@@ -49678,7 +50029,7 @@
       <ColNames>ID_ROLE</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7121" parent="7110" name="SYS_C007418">
+    <key id="7174" parent="7117" name="SYS_C007418">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-17.01:38:04</ModifiedTimestamp>
       <ColNames>ID_ROLE</ColNames>
@@ -49686,49 +50037,181 @@
       <UnderlyingIndexName>SYS_C007418</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7122" parent="7111" name="ID_USER">
+    <column id="7175" parent="7118" name="ID_SPORT">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7176" parent="7118" name="NAME_SPORT">
+      <Position>2</Position>
+      <DataType>VARCHAR2(45 byte)|0s</DataType>
+    </column>
+    <column id="7177" parent="7118" name="FK_IDCOLOR">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="7178" parent="7118" name="SYS_C007616">
+      <ObjectId>74612</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-18.20:15:35</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:15:35</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>ID_SPORT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7179" parent="7118" name="SYS_C007616">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:15:35</ModifiedTimestamp>
+      <ColNames>ID_SPORT</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007616</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7180" parent="7118" name="SYS_C007617">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:15:35</ModifiedTimestamp>
+      <ColNames>FK_IDCOLOR</ColNames>
+      <RefTableName>COLOR</RefTableName>
+      <RefKeyName>SYS_C007614</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7181" parent="7119" name="IDSTATUSEVENT">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7182" parent="7119" name="COLOR">
+      <Position>2</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <index id="7183" parent="7119" name="SYS_C007622">
+      <ObjectId>74616</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-18.20:21:58</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:21:58</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>IDSTATUSEVENT</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7184" parent="7119" name="SYS_C007622">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:21:58</ModifiedTimestamp>
+      <ColNames>IDSTATUSEVENT</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007622</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="7185" parent="7120" name="IDTEAM">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7186" parent="7120" name="NAME_TEAM">
+      <Position>2</Position>
+      <DataType>VARCHAR2(45 byte)|0s</DataType>
+    </column>
+    <column id="7187" parent="7120" name="FK_IDSPORT">
+      <Position>3</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+    </column>
+    <index id="7188" parent="7120" name="SYS_C007619">
+      <ObjectId>74614</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-18.20:17:22</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:17:22</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>IDTEAM</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7189" parent="7120" name="SYS_C007619">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:17:22</ModifiedTimestamp>
+      <ColNames>IDTEAM</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007619</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="7190" parent="7120" name="SYS_C007620">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:17:22</ModifiedTimestamp>
+      <ColNames>FK_IDSPORT</ColNames>
+      <RefTableName>SPORT</RefTableName>
+      <RefKeyName>SYS_C007616</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="7191" parent="7121" name="IDTIER">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7192" parent="7121" name="TIER_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(45 byte)|0s</DataType>
+    </column>
+    <column id="7193" parent="7121" name="TIER_PRICE">
+      <Position>3</Position>
+      <DataType>FLOAT(*)|0s</DataType>
+    </column>
+    <index id="7194" parent="7121" name="SYS_C007612">
+      <ObjectId>74608</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-04-18.20:14:20</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-18.20:14:20</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>IDTIER</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="7195" parent="7121" name="SYS_C007612">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-04-18.20:14:20</ModifiedTimestamp>
+      <ColNames>IDTIER</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007612</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="7196" parent="7122" name="ID_USER">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
       <AutoInc>1</AutoInc>
     </column>
-    <column id="7123" parent="7111" name="USERNAME">
+    <column id="7197" parent="7122" name="USERNAME">
       <Position>2</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7124" parent="7111" name="PASSWORD">
+    <column id="7198" parent="7122" name="PASSWORD">
       <Position>3</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7125" parent="7111" name="FIRST_NAME">
+    <column id="7199" parent="7122" name="FIRST_NAME">
       <Position>4</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7126" parent="7111" name="LAST_NAME">
+    <column id="7200" parent="7122" name="LAST_NAME">
       <Position>5</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7127" parent="7111" name="DATE_BIRTH">
+    <column id="7201" parent="7122" name="DATE_BIRTH">
       <Position>6</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7128" parent="7111" name="DATE_REGISTER">
+    <column id="7202" parent="7122" name="DATE_REGISTER">
       <Position>7</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7129" parent="7111" name="EMAIL">
+    <column id="7203" parent="7122" name="EMAIL">
       <Position>8</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7130" parent="7111" name="PATH_PHOTO">
+    <column id="7204" parent="7122" name="PATH_PHOTO">
       <Position>9</Position>
       <DataType>VARCHAR2(125 byte)|0s</DataType>
     </column>
-    <column id="7131" parent="7111" name="FK_IDROLE">
+    <column id="7205" parent="7122" name="FK_IDROLE">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7132" parent="7111" name="SYS_C007435">
+    <index id="7206" parent="7122" name="SYS_C007435">
       <ObjectId>74381</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-17.02:10:07</CreatedTimestamp>
@@ -49737,7 +50220,7 @@
       <ColNames>ID_USER</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7133" parent="7111" name="SYS_C007435">
+    <key id="7207" parent="7122" name="SYS_C007435">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-17.02:10:07</ModifiedTimestamp>
       <ColNames>ID_USER</ColNames>
@@ -49745,7 +50228,7 @@
       <UnderlyingIndexName>SYS_C007435</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7134" parent="7111" name="SYS_C007436">
+    <foreign-key id="7208" parent="7122" name="SYS_C007436">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-17.02:10:07</ModifiedTimestamp>
       <ColNames>FK_IDROLE</ColNames>
