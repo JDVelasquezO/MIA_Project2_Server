@@ -42,3 +42,24 @@ func GetStatusMembership(c *fiber.Ctx) error {
 
 	return c.JSON(membership)
 }
+
+func UpdateMembership (c *fiber.Ctx) error {
+	var data map[string]string // key: value
+	e := c.BodyParser(&data)
+	if e != nil {
+		return e
+	}
+
+	IdTier, _ := data["idTier"]
+	IdUser, _ := data["idUser"]
+
+	query := "UPDATE MEMBERSHIP SET FK_IDTIER = "+IdTier+" WHERE FK_IDUSER = "+IdUser+" "
+	_, err := database.DB.Query(query)
+	if err != nil {
+		fmt.Println("Error en la consulta")
+		log.Fatal(err)
+		return err
+	}
+
+	return GetStatusMembership(c)
+}

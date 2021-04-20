@@ -14,4 +14,5 @@ func Setup(app *fiber.App) {
 
 	// Routes of auth
 	app.Get("/quinielas.io/membership", controllers.GetStatusMembership)
+	app.Put("/quinielas.io/updateMembership", controllers.UpdateMembership)
 }
