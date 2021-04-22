@@ -1,3 +1,5 @@
+github.com/MALDRU/GoUpload v0.0.0-20190227170149-7b11eb0b96d3 h1:i6Ct1RdLk6RWMhjRxzJl8YqKsL97NXj+9dAvkFlUHeg=
+github.com/MALDRU/GoUpload v0.0.0-20190227170149-7b11eb0b96d3/go.mod h1:JlB954Kv6nkrvkcjt+Hng3Ac28eGUby6bp99QeNSpR0=
 github.com/andybalholm/brotli v1.0.0 h1:7UCwP93aiSfvWpapti8g88vVVGp2qqtGyePsSuDafo4=
 github.com/andybalholm/brotli v1.0.0/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/gofiber/fiber/v2 v2.7.1 h1:CpzGXD+7VhmptQ6McU5qYyRFxZdQkP2Y32ySIid+BXQ=

@@ -19,4 +19,8 @@ func Setup(app *fiber.App) {
 	// Routes of profile
 	app.Put("/quinielas.io/updateUser", controllers.UpdateDataUser)
 	app.Put("/quinielas.io/updatePass", controllers.UpdatePassword)
+	app.Put("/quinielas.io/updatePhoto", controllers.UpdateProfilePhoto)
+
+	// Routes of events
+	app.Get("/quinielas.io/getEvents", controllers.GetEvents)
 }

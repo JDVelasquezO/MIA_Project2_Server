@@ -80,3 +80,23 @@ func UpdatePassword (c *fiber.Ctx) error {
 
 	return User(c)
 }
+
+func UpdateProfilePhoto (c *fiber.Ctx) error {
+	cookie := c.Cookies("user")
+	var data map[string]string // key: value
+	e := c.BodyParser(&data)
+	if e != nil {
+		return e
+	}
+
+	image := data["image"]
+	updateImg := "UPDATE USERS SET PATH_PHOTO = '"+image+"' WHERE ID_USER = "+cookie+" "
+	_, err := database.DB.Query(updateImg)
+	if err != nil {
+		fmt.Println("Error en la consulta 2")
+		log.Fatal(err)
+		return err
+	}
+
+	return User(c)
+}
