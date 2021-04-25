@@ -23,4 +23,5 @@ func Setup(app *fiber.App) {
 
 	// Routes of events
 	app.Get("/quinielas.io/getEvents", controllers.GetEvents)
+	app.Get("/quinielas.io/getEvent/:id", controllers.GetEvent)
 }

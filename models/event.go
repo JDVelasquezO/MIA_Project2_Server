@@ -6,4 +6,5 @@ type Event struct {
 	Color string
 	Teams []Team
 	NameSport string
+	ColorSport string
 }
