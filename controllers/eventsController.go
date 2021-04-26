@@ -12,15 +12,16 @@ import (
 func GetEvents(c *fiber.Ctx) error {
 
 	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, USER_RESULT, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+		"NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
 		"FROM EVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
 		"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
 		"INNER JOIN TEAM T on EHT.FK_IDTEAM = T.IDTEAM " +
 		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EHT.FK_IDCLASSIFICATION " +
 		"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
-		"INNER JOIN PREDICTION P on EHT.FK_IDPREDICTION = P.ID_PREDICTION " +
-		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR"
+		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
+		"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+		"ORDER BY ID_EVENT ASC"
 
 	rows, err := database.DB.Query(query)
 	if err != nil {
@@ -38,7 +39,6 @@ func GetEvents(c *fiber.Ctx) error {
 	var nameClass string
 	var nameSport string
 	var colorSport string
-	var userRes int
 	var realRes int
 
 	for rows.Next() {
@@ -46,7 +46,7 @@ func GetEvents(c *fiber.Ctx) error {
 		var team models.Team
 
 		err := rows.Scan(&idEvent, &dateGame, &color, &idTeam, &nameClass, &nameTeam,
-			&userRes, &realRes, &nameSport, &colorSport)
+			&realRes, &nameSport, &colorSport)
 		if err != nil {
 			return err
 		}
@@ -58,7 +58,6 @@ func GetEvents(c *fiber.Ctx) error {
 			team.NameTeam = nameTeam
 			team.Classification = nameClass
 			team.RealResult = realRes
-			team.UserResult = userRes
 		event.NameSport = nameSport
 		event.ColorSport = colorSport
 
@@ -86,7 +85,20 @@ func GetEvents(c *fiber.Ctx) error {
 }
 
 func GetEvent(c *fiber.Ctx) error {
+	cookie := c.Cookies("user")
 	paramIdEvent, _ := c.ParamsInt("id")
+
+	queryGetMembership := "SELECT ID_MEMBERSHIP FROM MEMBERSHIP " +
+		"WHERE FK_IDUSER = "+cookie+" "
+
+	var idMembership int
+	rows, err := database.DB.Query(queryGetMembership)
+	for rows.Next() {
+		err := rows.Scan(&idMembership)
+		if err != nil {
+			return err
+		}
+	}
 
 	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
 		"NAME_TEAM, USER_RESULT, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
@@ -97,9 +109,11 @@ func GetEvent(c *fiber.Ctx) error {
 		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EHT.FK_IDCLASSIFICATION " +
 		"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
 		"INNER JOIN PREDICTION P on EHT.FK_IDPREDICTION = P.ID_PREDICTION " +
-		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR\nWHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+""
+		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
+		"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
+		"AND FK_IDMEMBERSHIP = "+strconv.Itoa(idMembership)+" "
 
-	rows, err := database.DB.Query(query)
+	rows, err = database.DB.Query(query)
 	if err != nil {
 		fmt.Println("Error en la consulta")
 		log.Fatal(err)
@@ -139,7 +153,6 @@ func GetEvent(c *fiber.Ctx) error {
 		event.ColorSport = colorSport
 		event.Teams = append(event.Teams, team)
 	}
-
 
 	return c.JSON(event)
 }
