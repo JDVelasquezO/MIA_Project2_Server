@@ -10,17 +10,37 @@ import (
 )
 
 func GetEvents(c *fiber.Ctx) error {
+	cookie := c.Cookies("user")
+
+	queryGetMembership := "SELECT ID_MEMBERSHIP, FK_IDTIER FROM MEMBERSHIP " +
+		"WHERE FK_IDUSER = "+cookie+" "
+
+	var idMembership int
+	var fkIdTier int
+	rows0, _ := database.DB.Query(queryGetMembership)
+	for rows0.Next() {
+		err0 := rows0.Scan(&idMembership, &fkIdTier)
+		if err0 != nil {
+			return err0
+		}
+	}
+
+	if fkIdTier == 4 {
+		return nil
+	}
 
 	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+		"NAME_TEAM, USER_RESULT, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
 		"FROM EVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
 		"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
 		"INNER JOIN TEAM T on EHT.FK_IDTEAM = T.IDTEAM " +
 		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EHT.FK_IDCLASSIFICATION " +
 		"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
+		"INNER JOIN PREDICTION P on EHT.FK_IDPREDICTION = P.ID_PREDICTION " +
+		"INNER JOIN MEMBERSHIP ON P.FK_IDMEMBERSHIP = MEMBERSHIP.ID_MEMBERSHIP " +
 		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
-		"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+		"WHERE FK_IDMEMBERSHIP = 3 " +
 		"ORDER BY ID_EVENT ASC"
 
 	rows, err := database.DB.Query(query)
@@ -40,13 +60,14 @@ func GetEvents(c *fiber.Ctx) error {
 	var nameSport string
 	var colorSport string
 	var realRes int
+	var userRes int
 
 	for rows.Next() {
 		var event models.Event
 		var team models.Team
 
 		err := rows.Scan(&idEvent, &dateGame, &color, &idTeam, &nameClass, &nameTeam,
-			&realRes, &nameSport, &colorSport)
+			&userRes, &realRes, &nameSport, &colorSport)
 		if err != nil {
 			return err
 		}
@@ -58,6 +79,7 @@ func GetEvents(c *fiber.Ctx) error {
 			team.NameTeam = nameTeam
 			team.Classification = nameClass
 			team.RealResult = realRes
+			team.UserResult = userRes
 		event.NameSport = nameSport
 		event.ColorSport = colorSport
 
