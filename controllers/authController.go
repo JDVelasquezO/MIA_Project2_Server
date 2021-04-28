@@ -38,10 +38,10 @@ func Register(c *fiber.Ctx) error {
 		"DATE_REGISTER, EMAIL, PATH_PHOTO, FK_IDROLE) VALUES ('" + user.Username +
 		"', '" + user.Password + "', '" + user.First + "', '" + user.Last + "', TO_DATE('" + user.DateBirth + "', 'yyyy/mm/dd')," +
 		"TO_DATE('" + user.DateRegister + "', 'yyyy/mm/dd'), '" + user.Email + "', '" + user.PathPhoto + "', 4)"
+
 	_, err := database.DB.Query(query)
+	// e = fmt.Errorf("Mal formato para email: %v", user.Email)
 	if err != nil {
-		fmt.Println("Error en la consulta")
-		log.Fatal(err)
 		return err
 	}
 
@@ -56,10 +56,10 @@ func Login(c *fiber.Ctx) error {
 	}
 
 	var user models.User
-	user.Email = data["email"]
+	user.Username = data["username"]
 	user.Password = data["pass"]
-	rows, err := database.DB.Query("SELECT ID_USER, USERNAME " +
-		"FROM TEST.USERS WHERE EMAIL = '" + user.Email + "' AND PASSWORD = '" + user.Password + "'")
+	rows, err := database.DB.Query("SELECT ID_USER " +
+		"FROM TEST.USERS WHERE USERNAME = '" + user.Username + "' AND PASSWORD = '" + user.Password + "'")
 	if err != nil {
 		log.Fatal("Error en la consulta")
 		return err
@@ -67,13 +67,11 @@ func Login(c *fiber.Ctx) error {
 
 	for rows.Next() {
 		var id int
-		var username string
-		err := rows.Scan(&id, &username)
+		err := rows.Scan(&id)
 		if err != nil {
 			return err
 		}
 		user.Id = id
-		user.Username = username
 	}
 
 	if user.Id != 0 {
