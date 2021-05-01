@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e557b7cf-3111-46f9-8b31-49803bc1f633" name="Default Changelist" comment="get data Membership">
-      <change afterPath="$PROJECT_DIR$/config/exception.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/seasonController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/season.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

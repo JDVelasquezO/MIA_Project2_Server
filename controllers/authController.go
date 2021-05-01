@@ -58,21 +58,26 @@ func Login(c *fiber.Ctx) error {
 	var user models.User
 	user.Username = data["username"]
 	user.Password = data["pass"]
+	// println(user.Username)
+	// println(user.Password)
 	rows, err := database.DB.Query("SELECT ID_USER " +
-		"FROM TEST.USERS WHERE USERNAME = '" + user.Username + "' AND PASSWORD = '" + user.Password + "'")
+		"FROM TEST.USERS " +
+		"WHERE USERNAME = '" + user.Username + "' AND PASSWORD = '" + user.Password + "'")
+	// rows, err := database.DB.Exec("BEGIN LOGIN_USER()")
 	if err != nil {
 		log.Fatal("Error en la consulta")
 		return err
 	}
 
+	var id int
 	for rows.Next() {
-		var id int
 		err := rows.Scan(&id)
 		if err != nil {
 			return err
 		}
 		user.Id = id
 	}
+	println(id)
 
 	if user.Id != 0 {
 		cookie := fiber.Cookie{
