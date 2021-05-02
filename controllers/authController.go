@@ -77,7 +77,7 @@ func Login(c *fiber.Ctx) error {
 		}
 		user.Id = id
 	}
-	println(id)
+	// println(id)
 
 	if user.Id != 0 {
 		cookie := fiber.Cookie{
