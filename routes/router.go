@@ -26,7 +26,7 @@ func Setup(app *fiber.App) {
 	app.Get("/quinielas.io/getEvent/:id", controllers.GetEvent)
 
 	// Routes of predictions
-	app.Put("/quinielas.io/postPrediction", controllers.PostPrediction)
+	app.Post("/quinielas.io/postPrediction", controllers.PostPrediction)
 
 	// Routes of seasons
 	app.Get("/quinielas.io/getActualSeason", controllers.GetActualSeason)

@@ -18,8 +18,11 @@ func PostPrediction (c *fiber.Ctx) error {
 
 	userRes1 := data["userRes1"]
 	userRes2 := data["userRes2"]
-	// idMembership := data["id_membership"]
 	idEvent := data["id_event"]
+	idTeam1 := data["id_team1"]
+	idTeam2 := data["id_team2"]
+	idClass1 := data["id_class1"]
+	idClass2 := data["id_class2"]
 
 	queryGetIdMembership := "SELECT ID_MEMBERSHIP FROM MEMBERSHIP " +
 		"WHERE FK_IDUSER = "+cookie+" "
@@ -29,7 +32,6 @@ func PostPrediction (c *fiber.Ctx) error {
 		log.Fatal(err0)
 		return err0
 	}
-
 	var idMembership int
 	for rows0.Next() {
 		err := rows0.Scan(&idMembership)
@@ -37,53 +39,51 @@ func PostPrediction (c *fiber.Ctx) error {
 			return err
 		}
 	}
+	println(idMembership)
 
-	// OBTENER IDS DE LAS PREDICCIONES
-	queryGetIdsPrediction := "SELECT FK_IDPREDICTION FROM EVENT_HAS_TEAM " +
-		"INNER JOIN PREDICTION P on EVENT_HAS_TEAM.FK_IDPREDICTION = P.ID_PREDICTION " +
-		"WHERE FK_IDEVENT = "+strconv.Itoa(idEvent)+" " +
-		"AND FK_IDMEMBERSHIP = "+strconv.Itoa(idMembership)+" "
-
-	rows, err := database.DB.Query(queryGetIdsPrediction)
-	if err != nil {
-		fmt.Println("Error en la consulta 2")
-		log.Fatal(err)
-		return err
-	}
-
-	var idsPredictions []int
-	var idPrediction int
-	for rows.Next() {
-		err := rows.Scan(&idPrediction)
+	// Para generar ids
+	var countIds int
+	rows1, _ := database.DB.Query("SELECT COUNT(*) FROM PREDICTION")
+	for rows1.Next() {
+		err := rows1.Scan(&countIds)
 		if err != nil {
 			return err
 		}
-		idsPredictions = append(idsPredictions, idPrediction)
 	}
+	// println(countIds)
+	firstId := countIds + 1
+	secondId := firstId + 1
 
-	// ACTUALIZAR PREDICCIONES
-	queryUpdatePrediction1 := "UPDATE PREDICTION SET " +
-		"USER_RESULT = "+strconv.Itoa(userRes1)+" " +
-		"WHERE ID_PREDICTION = "+strconv.Itoa(idsPredictions[0])+" "
-	_, err2 := database.DB.Query(queryUpdatePrediction1)
-	if err != nil {
+	// Para insertar predicciones:
+	queryInsertPrediction := "INSERT ALL " +
+		"INTO PREDICTION (ID_PREDICTION, USER_RESULT, FK_IDMEMBERSHIP) " +
+		"VALUES ("+strconv.Itoa(firstId)+", "+strconv.Itoa(userRes1)+", "+strconv.Itoa(idMembership)+") " +
+		"INTO PREDICTION (ID_PREDICTION, USER_RESULT, FK_IDMEMBERSHIP) " +
+		"VALUES ("+strconv.Itoa(secondId)+", "+strconv.Itoa(userRes2)+", "+strconv.Itoa(idMembership)+") " +
+		"SELECT 1 FROM DUAL"
+	_, err2 := database.DB.Query(queryInsertPrediction)
+	if err2 != nil {
 		fmt.Println("Error en la consulta 2")
 		log.Fatal(err2)
 		return err2
 	}
 
-	queryUpdatePrediction2 := "UPDATE PREDICTION SET " +
-		"USER_RESULT = "+strconv.Itoa(userRes2)+" " +
-		"WHERE ID_PREDICTION = "+strconv.Itoa(idsPredictions[1])+" "
-	_, err3 := database.DB.Query(queryUpdatePrediction2)
-	if err != nil {
+	queryRelationEvent := "INSERT ALL " +
+		"INTO EVENT_HAS_TEAM (FK_IDEVENT, FK_IDTEAM, FK_IDCLASSIFICATION, REAL_RESULT, FK_IDPREDICTION) " +
+		"VALUES ("+strconv.Itoa(idEvent)+", "+strconv.Itoa(idTeam1)+", "+strconv.Itoa(idClass1)+", " +
+		" 0, "+strconv.Itoa(firstId)+" ) " +
+		"INTO EVENT_HAS_TEAM (FK_IDEVENT, FK_IDTEAM, FK_IDCLASSIFICATION, REAL_RESULT, FK_IDPREDICTION) " +
+		"VALUES ("+strconv.Itoa(idEvent)+", "+strconv.Itoa(idTeam2)+", "+strconv.Itoa(idClass2)+", " +
+		" 0, "+strconv.Itoa(secondId)+" ) " +
+		"SELECT 1 FROM DUAL"
+	_, err3 := database.DB.Query(queryRelationEvent)
+	if err3 != nil {
 		fmt.Println("Error en la consulta 2")
 		log.Fatal(err3)
 		return err3
 	}
 
 	return c.JSON(fiber.Map{
-		"userRes1": userRes1,
-		"userRes2": userRes2,
+		"msg": "success",
 	})
 }
