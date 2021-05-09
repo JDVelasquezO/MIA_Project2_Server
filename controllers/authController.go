@@ -95,9 +95,10 @@ func Login(c *fiber.Ctx) error {
 func User(c *fiber.Ctx) error {
 	cookie := c.Cookies("user")
 	id, _ := strconv.Atoi(cookie)
+	// println(cookie)
 
 	rows, err := database.DB.Query("SELECT USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, " +
-		"DATE_BIRTH, DATE_REGISTER, EMAIL, PATH_PHOTO, FK_IDROLE " +
+		"DATE_BIRTH, DATE_REGISTER, EMAIL, FK_IDROLE " +
 		"FROM TEST.USERS WHERE ID_USER = '" + cookie + "' ")
 	if err != nil {
 		fmt.Println("Error en la consulta")
@@ -119,12 +120,12 @@ func User(c *fiber.Ctx) error {
 	var dateBirth string
 	var dateRegister string
 	var email string
-	var pathPhoto string
 	var idRole int
 	for rows.Next() {
 		err := rows.Scan(&username, &password, &firstName, &lastName, &dateBirth, &dateRegister,
-			&email, &pathPhoto, &idRole)
+			&email, &idRole)
 		if err != nil {
+			println("Error")
 			return err
 		}
 	}
@@ -136,7 +137,6 @@ func User(c *fiber.Ctx) error {
 	user.DateBirth = dateBirth
 	user.DateRegister = dateRegister
 	user.Email = email
-	user.PathPhoto = pathPhoto
 	user.IdRol = idRole
 
 	return c.JSON(user)

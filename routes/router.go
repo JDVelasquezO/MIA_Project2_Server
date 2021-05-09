@@ -30,4 +30,7 @@ func Setup(app *fiber.App) {
 
 	// Routes of seasons
 	app.Get("/quinielas.io/getActualSeason", controllers.GetActualSeason)
+
+	// Routes of positions
+	app.Get("/quinielas.io/getPositionsP10", controllers.GetP10)
 }

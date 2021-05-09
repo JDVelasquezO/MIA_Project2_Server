@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e557b7cf-3111-46f9-8b31-49803bc1f633" name="Default Changelist" comment="get data Membership">
+      <change afterPath="$PROJECT_DIR$/controllers/positionController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/P10.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/predictionController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/predictionController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/eventsController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/eventsController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +32,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/controllers/predictionController.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/database/conn.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/controllers/eventsController.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/routes/router.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1rFQKuBSjqh35D8IaDNpm1hl6IN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

@@ -30,7 +30,7 @@ func GetEvents(c *fiber.Ctx) error {
 	}
 
 	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+		"NAME_TEAM, NAME_SPORT, C3.NAME_COLOR " +
 		"FROM EVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
 		"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
@@ -39,7 +39,7 @@ func GetEvents(c *fiber.Ctx) error {
 		"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
 		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
 		"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+		"NAME_TEAM, NAME_SPORT, C3.NAME_COLOR " +
 		"ORDER BY ID_EVENT ASC"
 
 	rows, err := database.DB.Query(query)
@@ -58,14 +58,13 @@ func GetEvents(c *fiber.Ctx) error {
 	var nameClass string
 	var nameSport string
 	var colorSport string
-	var realRes int
 
 	for rows.Next() {
 		var event models.Event
 		var team models.Team
 
 		err := rows.Scan(&idEvent, &dateGame, &color, &idTeam, &nameClass, &nameTeam,
-			&realRes, &nameSport, &colorSport)
+			&nameSport, &colorSport)
 		if err != nil {
 			return err
 		}
@@ -76,7 +75,6 @@ func GetEvents(c *fiber.Ctx) error {
 		team.IdTeam = idTeam
 		team.NameTeam = nameTeam
 		team.Classification = nameClass
-		team.RealResult = realRes
 		event.NameSport = nameSport
 		event.ColorSport = colorSport
 
@@ -140,8 +138,7 @@ func GetEvent(c *fiber.Ctx) error {
 	event = executeQuery(query)
 	if event.IdEvent == 0 {
 		// println("Entro aqui")
-		newQuery := "SELECT IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_CLASSIFICATION, " +
-			"NAME_TEAM, NAME_SPORT, C3.NAME_COLOR " +
+		newQuery := "SELECT IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_TEAM, NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR " +
 			"FROM EVENT " +
 			"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
 			"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
@@ -150,8 +147,8 @@ func GetEvent(c *fiber.Ctx) error {
 			"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
 			"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
 			"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
-			"GROUP BY IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_CLASSIFICATION, " +
-			"NAME_TEAM, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR"
+			"GROUP BY IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_TEAM, " +
+			"NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR"
 		event = executeQuery2(newQuery)
 	}
 
@@ -179,8 +176,8 @@ func executeQuery (query string) models.Event {
 	var event models.Event
 	for rows.Next() {
 		var team models.Team
-		err := rows.Scan(&idEvent, &dateGame, &color, &idTeam, &nameClass, &nameTeam,
-			&userRes, &realRes, &nameSport, &colorSport)
+		err := rows.Scan(&idEvent, &dateGame, &colorSport, &idTeam, &nameClass, &nameTeam,
+			&userRes, &realRes, &nameSport, &color)
 		if err != nil {
 			println(err)
 		}
@@ -219,8 +216,8 @@ func executeQuery2 (query string) models.Event {
 	var event models.Event
 	for rows.Next() {
 		var team models.Team
-		err := rows.Scan(&idTeam, &idEvent, &dateGame, &color, &nameClass, &nameTeam,
-			&nameSport, &colorSport)
+		err := rows.Scan(&idTeam, &idEvent, &dateGame, &color, &nameTeam, &nameSport,
+			&nameClass, &colorSport)
 		if err != nil {
 			println(err)
 		}
