@@ -29,18 +29,16 @@ func GetEvents(c *fiber.Ctx) error {
 		return nil
 	}
 
-	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, NAME_SPORT, C3.NAME_COLOR " +
+	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, FK_IDTEAM, NAME_CLASSIFICATION, NAME_TEAM, " +
+		"NAME_SPORT, C3.NAME_COLOR, REAL_RES " +
 		"FROM EVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
-		"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
-		"INNER JOIN TEAM T on EHT.FK_IDTEAM = T.IDTEAM " +
-		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EHT.FK_IDCLASSIFICATION " +
-		"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
-		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
-		"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, NAME_SPORT, C3.NAME_COLOR " +
-		"ORDER BY ID_EVENT ASC"
+		"INNER JOIN EVENT_TEAM ET on EVENT.ID_EVENT = ET.FK_IDEVENT " +
+		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
+		"INNER JOIN TEAM T on T.IDTEAM = ET.FK_IDTEAM " +
+		"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
+		"INNER JOIN COLOR C3 on S2.FK_IDCOLOR = C3.ID_COLOR " +
+		"ORDER BY ID_EVENT, FK_IDTEAM"
 
 	rows, err := database.DB.Query(query)
 	if err != nil {
@@ -58,13 +56,14 @@ func GetEvents(c *fiber.Ctx) error {
 	var nameClass string
 	var nameSport string
 	var colorSport string
+	var realRes int
 
 	for rows.Next() {
 		var event models.Event
 		var team models.Team
 
 		err := rows.Scan(&idEvent, &dateGame, &color, &idTeam, &nameClass, &nameTeam,
-			&nameSport, &colorSport)
+			&nameSport, &colorSport, &realRes)
 		if err != nil {
 			return err
 		}
@@ -75,6 +74,7 @@ func GetEvents(c *fiber.Ctx) error {
 		team.IdTeam = idTeam
 		team.NameTeam = nameTeam
 		team.Classification = nameClass
+		team.RealResult = realRes
 		event.NameSport = nameSport
 		event.ColorSport = colorSport
 
@@ -121,34 +121,39 @@ func GetEvent(c *fiber.Ctx) error {
 		}
 	}
 
-	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, IDTEAM, NAME_CLASSIFICATION, " +
-		"NAME_TEAM, USER_RESULT, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
+	query := "SELECT DISTINCT ID_EVENT, DATE_OF_GAME, COLOR, ET.FK_IDTEAM, NAME_CLASSIFICATION, NAME_TEAM, " +
+		"USER_RESULT, REAL_RES, NAME_SPORT, C3.NAME_COLOR " +
 		"FROM EVENT " +
+		"INNER JOIN PREDICTION_EVENT PE on EVENT.ID_EVENT = PE.FK_IDEVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
-		"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
-		"INNER JOIN TEAM T on EHT.FK_IDTEAM = T.IDTEAM " +
-		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EHT.FK_IDCLASSIFICATION " +
-		"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
-		"INNER JOIN PREDICTION P on EHT.FK_IDPREDICTION = P.ID_PREDICTION " +
-		"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
+		"INNER JOIN TEAM T on T.IDTEAM = PE.FK_IDTEAM " +
+		"INNER JOIN PREDICTION P on P.ID_PREDICTION = PE.FK_IDPREDICTION " +
+		"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
+		"INNER JOIN COLOR C3 on C3.ID_COLOR = S2.FK_IDCOLOR " +
+		"INNER JOIN EVENT_TEAM ET on PE.FK_IDTEAM = ET.FK_IDTEAM " +
+		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
 		"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
-		"AND FK_IDMEMBERSHIP = "+strconv.Itoa(idMembership)+" "
+		"AND FK_IDMEMBERSHIP = "+strconv.Itoa(idMembership)+" " +
+		"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, ET.FK_IDTEAM, " +
+		"NAME_CLASSIFICATION, NAME_TEAM, USER_RESULT, REAL_RES, NAME_SPORT, C3.NAME_COLOR"
 
 	var event models.Event
 	event = executeQuery(query)
 	if event.IdEvent == 0 {
 		// println("Entro aqui")
-		newQuery := "SELECT IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_TEAM, NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR " +
+		newQuery := "SELECT ET.FK_IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_TEAM, NAME_SPORT, " +
+			"NAME_CLASSIFICATION, C3.NAME_COLOR " +
 			"FROM EVENT " +
 			"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
-			"INNER JOIN EVENT_HAS_TEAM EHT on EVENT.ID_EVENT = EHT.FK_IDEVENT " +
-			"INNER JOIN TEAM T on EHT.FK_IDTEAM = T.IDTEAM " +
-			"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EHT.FK_IDCLASSIFICATION " +
-			"INNER JOIN SPORT S on T.FK_IDSPORT = S.ID_SPORT " +
-			"INNER JOIN COLOR C3 on S.FK_IDCOLOR = C3.ID_COLOR " +
+			"INNER JOIN PREDICTION_EVENT PE on EVENT.ID_EVENT = PE.FK_IDEVENT " +
+			"INNER JOIN EVENT_TEAM ET on PE.FK_IDTEAM = ET.FK_IDTEAM " +
+			"INNER JOIN TEAM T on T.IDTEAM = ET.FK_IDTEAM " +
+			"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
+			"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
+			"INNER JOIN COLOR C3 on C3.ID_COLOR = S2.FK_IDCOLOR " +
 			"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
-			"GROUP BY IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_TEAM, " +
-			"NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR"
+			"GROUP BY ET.FK_IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, " +
+			"NAME_TEAM, NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR"
 		event = executeQuery2(newQuery)
 	}
 
@@ -235,4 +240,62 @@ func executeQuery2 (query string) models.Event {
 	event.Teams[0].UserResult = -1
 	event.Teams[1].UserResult = -1
 	return event
+}
+
+func PostEvent(c *fiber.Ctx) error {
+	// Recuperar conteo de eventos
+	query := "SELECT COUNT(*) FROM EVENT"
+	rows, _ := database.DB.Query(query)
+	var idEvent int
+	for rows.Next() {
+		err := rows.Scan(&idEvent)
+		if err != nil {
+			println(err)
+			return err
+		}
+	}
+
+	var data map[string]string
+	e := c.BodyParser(&data)
+	if e != nil {
+		return e
+	}
+
+	// var event models.Event
+	idEvent += 1
+	eventDate := data["dateEvent"]
+	fkIdWD := data["idWd"]
+	fkIdStatus := data["idStatus"]
+
+	// Insertar evento nuevo
+	query2 := "INSERT INTO EVENT (ID_EVENT, DATE_OF_GAME, FK_IDSTATUSEVENT, FK_IDWORKINGDAY) " +
+		"VALUES ("+strconv.Itoa(idEvent)+", TO_DATE('"+eventDate+"', 'YYYY/MM/DD HH24:MI:SS'), "+fkIdStatus+", "+fkIdWD+" )"
+
+	_, err := database.DB.Query(query2)
+	if err != nil {
+		println(err)
+		return err
+	}
+
+	// Insertar evento-equipo
+	fkIdTeam1 := data["idTeam1"]
+	fkIdTeam2 := data["idTeam2"]
+	fkIdClass1 := data["idClass1"]
+	fkIdClass2 := data["idClass2"]
+
+	query3 := "INSERT ALL " +
+		"INTO EVENT_TEAM (FK_IDEVENT, FK_IDTEAM, REAL_RES, FK_IDCLASIFICATION) " +
+		"VALUES ("+strconv.Itoa(idEvent)+", "+fkIdTeam1+", 0, "+fkIdClass1+") " +
+		"INTO EVENT_TEAM (FK_IDEVENT, FK_IDTEAM, REAL_RES, FK_IDCLASIFICATION) " +
+		"VALUES ("+strconv.Itoa(idEvent)+", "+fkIdTeam2+", 0, "+fkIdClass2+") " +
+		"SELECT 1 FROM DUAL"
+	_, err = database.DB.Query(query3)
+	if err != nil {
+		println(err)
+		return err
+	}
+
+	return c.JSON(fiber.Map{
+		"msg": "success",
+	})
 }

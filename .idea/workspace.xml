@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e557b7cf-3111-46f9-8b31-49803bc1f633" name="Default Changelist" comment="get data Membership">
-      <change afterPath="$PROJECT_DIR$/controllers/positionController.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/P10.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/fileUploadController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/sportController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/teamController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/workdayController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/sport.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/workday.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/eventsController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/eventsController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

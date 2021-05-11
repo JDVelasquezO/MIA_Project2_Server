@@ -24,6 +24,7 @@ func Setup(app *fiber.App) {
 	// Routes of events
 	app.Get("/quinielas.io/getEvents", controllers.GetEvents)
 	app.Get("/quinielas.io/getEvent/:id", controllers.GetEvent)
+	app.Post("/quinielas.io/postEvent", controllers.PostEvent)
 
 	// Routes of predictions
 	app.Post("/quinielas.io/postPrediction", controllers.PostPrediction)
@@ -33,4 +34,16 @@ func Setup(app *fiber.App) {
 
 	// Routes of positions
 	app.Get("/quinielas.io/getPositionsP10", controllers.GetP10)
+
+	// Routes for bulk load
+	app.Post("/quinielas.io/uploadFile", controllers.UploadFile)
+
+	// Routes for sports
+	app.Get("/quinielas.io/getSports", controllers.GetSports)
+
+	// Routes for teams
+	app.Post("/quinielas.io/getTeamsById", controllers.GetTeamById)
+
+	// Routes for workdays
+	app.Get("/quinielas.io/getWorkdays", controllers.GetWorkday)
 }
