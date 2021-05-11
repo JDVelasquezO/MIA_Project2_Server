@@ -21,8 +21,8 @@ func PostPrediction (c *fiber.Ctx) error {
 	idEvent := data["id_event"]
 	idTeam1 := data["id_team1"]
 	idTeam2 := data["id_team2"]
-	idClass1 := data["id_class1"]
-	idClass2 := data["id_class2"]
+	/*idClass1 := data["id_class1"]
+	idClass2 := data["id_class2"]*/
 
 	queryGetIdMembership := "SELECT ID_MEMBERSHIP FROM MEMBERSHIP " +
 		"WHERE FK_IDUSER = "+cookie+" "
@@ -69,12 +69,10 @@ func PostPrediction (c *fiber.Ctx) error {
 	}
 
 	queryRelationEvent := "INSERT ALL " +
-		"INTO EVENT_HAS_TEAM (FK_IDEVENT, FK_IDTEAM, FK_IDCLASSIFICATION, REAL_RESULT, FK_IDPREDICTION) " +
-		"VALUES ("+strconv.Itoa(idEvent)+", "+strconv.Itoa(idTeam1)+", "+strconv.Itoa(idClass1)+", " +
-		" 0, "+strconv.Itoa(firstId)+" ) " +
-		"INTO EVENT_HAS_TEAM (FK_IDEVENT, FK_IDTEAM, FK_IDCLASSIFICATION, REAL_RESULT, FK_IDPREDICTION) " +
-		"VALUES ("+strconv.Itoa(idEvent)+", "+strconv.Itoa(idTeam2)+", "+strconv.Itoa(idClass2)+", " +
-		" 0, "+strconv.Itoa(secondId)+" ) " +
+		"INTO PREDICTION_EVENT (FK_IDPREDICTION, FK_IDEVENT, FK_IDTEAM) " +
+		"VALUES ("+strconv.Itoa(firstId)+", "+strconv.Itoa(idEvent)+", "+strconv.Itoa(idTeam1)+") " +
+		"INTO PREDICTION_EVENT (FK_IDPREDICTION, FK_IDEVENT, FK_IDTEAM) " +
+		"VALUES ("+strconv.Itoa(secondId)+", "+strconv.Itoa(idEvent)+", "+strconv.Itoa(idTeam2)+") " +
 		"SELECT 1 FROM DUAL"
 	_, err3 := database.DB.Query(queryRelationEvent)
 	if err3 != nil {

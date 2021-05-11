@@ -110,9 +110,9 @@
     <schema id="35" parent="1" name="TEST">
       <ObjectId>102</ObjectId>
       <CreatedTimestamp>2021-04-13.20:28:50</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-09.18:30:49</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-05-11.07:30:18</ModifiedTimestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <IntrospectionTimestamp>2021-05-10.13:36:23</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-05-11.07:35:53</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="36" parent="1" name="WMSYS">
@@ -49622,7 +49622,7 @@
     <table id="7111" parent="35" name="COLOR">
       <ObjectId>74609</ObjectId>
       <CreatedTimestamp>2021-04-18.20:15:00</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-18.20:15:00</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-05-11.07:30:18</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="7112" parent="35" name="EVENT">
@@ -49816,7 +49816,11 @@
       <Position>2</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7143" parent="7111" name="SYS_C007614">
+    <column id="7143" parent="7111" name="COD_HEX">
+      <Position>3</Position>
+      <DataType>VARCHAR2(16 byte)|0s</DataType>
+    </column>
+    <index id="7144" parent="7111" name="SYS_C007614">
       <ObjectId>74610</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-18.20:15:00</CreatedTimestamp>
@@ -49825,7 +49829,7 @@
       <ColNames>ID_COLOR</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7144" parent="7111" name="SYS_C007614">
+    <key id="7145" parent="7111" name="SYS_C007614">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:15:00</ModifiedTimestamp>
       <ColNames>ID_COLOR</ColNames>
@@ -49833,24 +49837,24 @@
       <UnderlyingIndexName>SYS_C007614</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7145" parent="7112" name="ID_EVENT">
+    <column id="7146" parent="7112" name="ID_EVENT">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7146" parent="7112" name="DATE_OF_GAME">
+    <column id="7147" parent="7112" name="DATE_OF_GAME">
       <Position>2</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7147" parent="7112" name="FK_IDSTATUSEVENT">
+    <column id="7148" parent="7112" name="FK_IDSTATUSEVENT">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7148" parent="7112" name="FK_IDWORKINGDAY">
+    <column id="7149" parent="7112" name="FK_IDWORKINGDAY">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7149" parent="7112" name="SYS_C007707">
+    <index id="7150" parent="7112" name="SYS_C007707">
       <ObjectId>74660</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-19.07:17:46</CreatedTimestamp>
@@ -49859,7 +49863,7 @@
       <ColNames>ID_EVENT</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7150" parent="7112" name="SYS_C007707">
+    <key id="7151" parent="7112" name="SYS_C007707">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:17:46</ModifiedTimestamp>
       <ColNames>ID_EVENT</ColNames>
@@ -49867,7 +49871,7 @@
       <UnderlyingIndexName>SYS_C007707</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7151" parent="7112" name="SYS_C007708">
+    <foreign-key id="7152" parent="7112" name="SYS_C007708">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:17:46</ModifiedTimestamp>
       <ColNames>FK_IDSTATUSEVENT</ColNames>
@@ -49875,7 +49879,7 @@
       <RefKeyName>SYS_C007622</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7152" parent="7112" name="SYS_C007947">
+    <foreign-key id="7153" parent="7112" name="SYS_C007947">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-30.07:05:23</ModifiedTimestamp>
       <ColNames>FK_IDWORKINGDAY</ColNames>
@@ -49883,31 +49887,31 @@
       <RefKeyName>SYS_C007945</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7153" parent="7113" name="FK_IDEVENT">
+    <column id="7154" parent="7113" name="FK_IDEVENT">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7154" parent="7113" name="FK_IDTEAM">
+    <column id="7155" parent="7113" name="FK_IDTEAM">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7155" parent="7113" name="FK_IDCLASSIFICATION">
+    <column id="7156" parent="7113" name="FK_IDCLASSIFICATION">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7156" parent="7113" name="REAL_RESULT">
+    <column id="7157" parent="7113" name="REAL_RESULT">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7157" parent="7113" name="FK_IDPREDICTION">
+    <column id="7158" parent="7113" name="FK_IDPREDICTION">
       <Position>5</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="7158" parent="7113" name="PK_EVENT_TEAM">
+    <index id="7159" parent="7113" name="PK_EVENT_TEAM">
       <ObjectId>75268</ObjectId>
       <CreatedTimestamp>2021-04-25.13:31:14</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-25.13:31:14</ModifiedTimestamp>
@@ -49918,7 +49922,7 @@ FK_IDCLASSIFICATION
 FK_IDPREDICTION</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7159" parent="7113" name="PK_EVENT_TEAM">
+    <key id="7160" parent="7113" name="PK_EVENT_TEAM">
       <ModifiedTimestamp>2021-04-25.13:31:14</ModifiedTimestamp>
       <ColNames>FK_IDEVENT
 FK_IDTEAM
@@ -49928,7 +49932,7 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>PK_EVENT_TEAM</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7160" parent="7113" name="SYS_C007713">
+    <foreign-key id="7161" parent="7113" name="SYS_C007713">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
       <ColNames>FK_IDEVENT</ColNames>
@@ -49936,7 +49940,7 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007707</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7161" parent="7113" name="SYS_C007714">
+    <foreign-key id="7162" parent="7113" name="SYS_C007714">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
       <ColNames>FK_IDTEAM</ColNames>
@@ -49944,7 +49948,7 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007619</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7162" parent="7113" name="SYS_C007715">
+    <foreign-key id="7163" parent="7113" name="SYS_C007715">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:20:48</ModifiedTimestamp>
       <ColNames>FK_IDCLASSIFICATION</ColNames>
@@ -49952,32 +49956,32 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007686</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7163" parent="7113" name="CONST_FK_IDPREDICTION">
+    <foreign-key id="7164" parent="7113" name="CONST_FK_IDPREDICTION">
       <ModifiedTimestamp>2021-04-22.11:32:07</ModifiedTimestamp>
       <ColNames>FK_IDPREDICTION</ColNames>
       <RefTableName>PREDICTION</RefTableName>
       <RefKeyName>SYS_C007718</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7164" parent="7114" name="FK_IDEVENT">
+    <column id="7165" parent="7114" name="FK_IDEVENT">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7165" parent="7114" name="FK_IDTEAM">
+    <column id="7166" parent="7114" name="FK_IDTEAM">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7166" parent="7114" name="REAL_RES">
+    <column id="7167" parent="7114" name="REAL_RES">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7167" parent="7114" name="FK_IDCLASIFICATION">
+    <column id="7168" parent="7114" name="FK_IDCLASIFICATION">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7168" parent="7114" name="SYS_C008304">
+    <index id="7169" parent="7114" name="SYS_C008304">
       <ObjectId>76380</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-05-09.16:51:31</CreatedTimestamp>
@@ -49987,7 +49991,7 @@ FK_IDPREDICTION</ColNames>
 FK_IDEVENT</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7169" parent="7114" name="SYS_C008304">
+    <key id="7170" parent="7114" name="SYS_C008304">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-05-09.16:51:31</ModifiedTimestamp>
       <ColNames>FK_IDTEAM
@@ -49996,7 +50000,7 @@ FK_IDEVENT</ColNames>
       <UnderlyingIndexName>SYS_C008304</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7170" parent="7114" name="SYS_C008305">
+    <foreign-key id="7171" parent="7114" name="SYS_C008305">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-05-09.16:51:31</ModifiedTimestamp>
       <ColNames>FK_IDEVENT</ColNames>
@@ -50004,7 +50008,7 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007707</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7171" parent="7114" name="SYS_C008306">
+    <foreign-key id="7172" parent="7114" name="SYS_C008306">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-05-09.16:51:31</ModifiedTimestamp>
       <ColNames>FK_IDTEAM</ColNames>
@@ -50012,7 +50016,7 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007619</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7172" parent="7114" name="SYS_C008307">
+    <foreign-key id="7173" parent="7114" name="SYS_C008307">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-05-09.16:51:31</ModifiedTimestamp>
       <ColNames>FK_IDCLASIFICATION</ColNames>
@@ -50020,42 +50024,42 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007686</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7173" parent="7115" name="TITULO">
+    <column id="7174" parent="7115" name="TITULO">
       <Position>1</Position>
       <DataType>VARCHAR2(40 byte)|0s</DataType>
     </column>
-    <column id="7174" parent="7115" name="AUTOR">
+    <column id="7175" parent="7115" name="AUTOR">
       <Position>2</Position>
       <DataType>VARCHAR2(30 byte)|0s</DataType>
     </column>
-    <column id="7175" parent="7115" name="EDITORIAL">
+    <column id="7176" parent="7115" name="EDITORIAL">
       <Position>3</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <column id="7176" parent="7115" name="PRECIO">
+    <column id="7177" parent="7115" name="PRECIO">
       <Position>4</Position>
       <DataType>NUMBER(5,2 digit)|0s</DataType>
     </column>
-    <column id="7177" parent="7116" name="ID_MEMBERSHIP">
+    <column id="7178" parent="7116" name="ID_MEMBERSHIP">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7178" parent="7116" name="FK_IDUSER">
+    <column id="7179" parent="7116" name="FK_IDUSER">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7179" parent="7116" name="FK_IDTIER">
+    <column id="7180" parent="7116" name="FK_IDTIER">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7180" parent="7116" name="FK_SEASON">
+    <column id="7181" parent="7116" name="FK_SEASON">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7181" parent="7116" name="SYS_C007670">
+    <index id="7182" parent="7116" name="SYS_C007670">
       <ObjectId>74641</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-19.03:45:08</CreatedTimestamp>
@@ -50064,7 +50068,7 @@ FK_IDEVENT</ColNames>
       <ColNames>ID_MEMBERSHIP</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7182" parent="7116" name="SYS_C007670">
+    <key id="7183" parent="7116" name="SYS_C007670">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
       <ColNames>ID_MEMBERSHIP</ColNames>
@@ -50072,7 +50076,7 @@ FK_IDEVENT</ColNames>
       <UnderlyingIndexName>SYS_C007670</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7183" parent="7116" name="SYS_C007671">
+    <foreign-key id="7184" parent="7116" name="SYS_C007671">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
       <ColNames>FK_IDUSER</ColNames>
@@ -50080,7 +50084,7 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007435</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7184" parent="7116" name="SYS_C007672">
+    <foreign-key id="7185" parent="7116" name="SYS_C007672">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.03:45:08</ModifiedTimestamp>
       <ColNames>FK_IDTIER</ColNames>
@@ -50088,7 +50092,7 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007612</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7185" parent="7116" name="SYS_C007992">
+    <foreign-key id="7186" parent="7116" name="SYS_C007992">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-05-01.07:52:46</ModifiedTimestamp>
       <ColNames>FK_SEASON</ColNames>
@@ -50096,20 +50100,20 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007943</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7186" parent="7117" name="ID_PREDICTION">
+    <column id="7187" parent="7117" name="ID_PREDICTION">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7187" parent="7117" name="USER_RESULT">
+    <column id="7188" parent="7117" name="USER_RESULT">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7188" parent="7117" name="FK_IDMEMBERSHIP">
+    <column id="7189" parent="7117" name="FK_IDMEMBERSHIP">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7189" parent="7117" name="SYS_C007718">
+    <index id="7190" parent="7117" name="SYS_C007718">
       <ObjectId>74668</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-19.07:30:40</CreatedTimestamp>
@@ -50118,7 +50122,7 @@ FK_IDEVENT</ColNames>
       <ColNames>ID_PREDICTION</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7190" parent="7117" name="SYS_C007718">
+    <key id="7191" parent="7117" name="SYS_C007718">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:30:40</ModifiedTimestamp>
       <ColNames>ID_PREDICTION</ColNames>
@@ -50126,7 +50130,7 @@ FK_IDEVENT</ColNames>
       <UnderlyingIndexName>SYS_C007718</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7191" parent="7117" name="SYS_C007719">
+    <foreign-key id="7192" parent="7117" name="SYS_C007719">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:30:40</ModifiedTimestamp>
       <ColNames>FK_IDMEMBERSHIP</ColNames>
@@ -50134,21 +50138,21 @@ FK_IDEVENT</ColNames>
       <RefKeyName>SYS_C007670</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7192" parent="7118" name="FK_IDPREDICTION">
+    <column id="7193" parent="7118" name="FK_IDPREDICTION">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7193" parent="7118" name="FK_IDEVENT">
+    <column id="7194" parent="7118" name="FK_IDEVENT">
       <Position>2</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7194" parent="7118" name="FK_IDTEAM">
+    <column id="7195" parent="7118" name="FK_IDTEAM">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7195" parent="7118" name="SYS_C007720">
+    <index id="7196" parent="7118" name="SYS_C007720">
       <ObjectId>74670</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-19.07:38:23</CreatedTimestamp>
@@ -50158,7 +50162,7 @@ FK_IDEVENT</ColNames>
 FK_IDPREDICTION</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7196" parent="7118" name="SYS_C007720">
+    <key id="7197" parent="7118" name="SYS_C007720">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
       <ColNames>FK_IDEVENT
@@ -50167,7 +50171,7 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007720</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7197" parent="7118" name="SYS_C007721">
+    <foreign-key id="7198" parent="7118" name="SYS_C007721">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
       <ColNames>FK_IDPREDICTION</ColNames>
@@ -50175,7 +50179,7 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007718</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7198" parent="7118" name="SYS_C007722">
+    <foreign-key id="7199" parent="7118" name="SYS_C007722">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-19.07:38:23</ModifiedTimestamp>
       <ColNames>FK_IDEVENT</ColNames>
@@ -50183,7 +50187,7 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007707</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="7199" parent="7118" name="SYS_C008349">
+    <foreign-key id="7200" parent="7118" name="SYS_C008349">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-05-09.18:30:49</ModifiedTimestamp>
       <ColNames>FK_IDTEAM</ColNames>
@@ -50191,17 +50195,17 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007619</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7200" parent="7119" name="ID_ROLE">
+    <column id="7201" parent="7119" name="ID_ROLE">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
       <AutoInc>1</AutoInc>
     </column>
-    <column id="7201" parent="7119" name="ROLE_NAME">
+    <column id="7202" parent="7119" name="ROLE_NAME">
       <Position>2</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7202" parent="7119" name="SYS_C007418">
+    <index id="7203" parent="7119" name="SYS_C007418">
       <ObjectId>74363</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-17.01:38:04</CreatedTimestamp>
@@ -50210,7 +50214,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>ID_ROLE</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7203" parent="7119" name="SYS_C007418">
+    <key id="7204" parent="7119" name="SYS_C007418">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-17.01:38:04</ModifiedTimestamp>
       <ColNames>ID_ROLE</ColNames>
@@ -50218,24 +50222,24 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007418</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7204" parent="7120" name="ID_SEASON">
+    <column id="7205" parent="7120" name="ID_SEASON">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7205" parent="7120" name="START_DATE">
+    <column id="7206" parent="7120" name="START_DATE">
       <Position>2</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7206" parent="7120" name="END_DATE">
+    <column id="7207" parent="7120" name="END_DATE">
       <Position>3</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7207" parent="7120" name="NAME">
+    <column id="7208" parent="7120" name="NAME">
       <Position>4</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7208" parent="7120" name="SYS_C007943">
+    <index id="7209" parent="7120" name="SYS_C007943">
       <ObjectId>75540</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-30.06:59:23</CreatedTimestamp>
@@ -50244,7 +50248,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>ID_SEASON</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7209" parent="7120" name="SYS_C007943">
+    <key id="7210" parent="7120" name="SYS_C007943">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-30.06:59:23</ModifiedTimestamp>
       <ColNames>ID_SEASON</ColNames>
@@ -50252,20 +50256,20 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007943</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7210" parent="7121" name="ID_SPORT">
+    <column id="7211" parent="7121" name="ID_SPORT">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7211" parent="7121" name="NAME_SPORT">
+    <column id="7212" parent="7121" name="NAME_SPORT">
       <Position>2</Position>
       <DataType>VARCHAR2(45 byte)|0s</DataType>
     </column>
-    <column id="7212" parent="7121" name="FK_IDCOLOR">
+    <column id="7213" parent="7121" name="FK_IDCOLOR">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7213" parent="7121" name="SYS_C007616">
+    <index id="7214" parent="7121" name="SYS_C007616">
       <ObjectId>74612</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-18.20:15:35</CreatedTimestamp>
@@ -50274,7 +50278,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>ID_SPORT</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7214" parent="7121" name="SYS_C007616">
+    <key id="7215" parent="7121" name="SYS_C007616">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:15:35</ModifiedTimestamp>
       <ColNames>ID_SPORT</ColNames>
@@ -50282,7 +50286,7 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007616</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7215" parent="7121" name="SYS_C007617">
+    <foreign-key id="7216" parent="7121" name="SYS_C007617">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:15:35</ModifiedTimestamp>
       <ColNames>FK_IDCOLOR</ColNames>
@@ -50290,16 +50294,16 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007614</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7216" parent="7122" name="IDSTATUSEVENT">
+    <column id="7217" parent="7122" name="IDSTATUSEVENT">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7217" parent="7122" name="COLOR">
+    <column id="7218" parent="7122" name="COLOR">
       <Position>2</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7218" parent="7122" name="SYS_C007622">
+    <index id="7219" parent="7122" name="SYS_C007622">
       <ObjectId>74616</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-18.20:21:58</CreatedTimestamp>
@@ -50308,7 +50312,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>IDSTATUSEVENT</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7219" parent="7122" name="SYS_C007622">
+    <key id="7220" parent="7122" name="SYS_C007622">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:21:58</ModifiedTimestamp>
       <ColNames>IDSTATUSEVENT</ColNames>
@@ -50316,20 +50320,20 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007622</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7220" parent="7123" name="IDTEAM">
+    <column id="7221" parent="7123" name="IDTEAM">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7221" parent="7123" name="NAME_TEAM">
+    <column id="7222" parent="7123" name="NAME_TEAM">
       <Position>2</Position>
       <DataType>VARCHAR2(45 byte)|0s</DataType>
     </column>
-    <column id="7222" parent="7123" name="FK_IDSPORT">
+    <column id="7223" parent="7123" name="FK_IDSPORT">
       <Position>3</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7223" parent="7123" name="SYS_C007619">
+    <index id="7224" parent="7123" name="SYS_C007619">
       <ObjectId>74614</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-18.20:17:22</CreatedTimestamp>
@@ -50338,7 +50342,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>IDTEAM</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7224" parent="7123" name="SYS_C007619">
+    <key id="7225" parent="7123" name="SYS_C007619">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:17:22</ModifiedTimestamp>
       <ColNames>IDTEAM</ColNames>
@@ -50346,7 +50350,7 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007619</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7225" parent="7123" name="SYS_C007620">
+    <foreign-key id="7226" parent="7123" name="SYS_C007620">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:17:22</ModifiedTimestamp>
       <ColNames>FK_IDSPORT</ColNames>
@@ -50354,20 +50358,20 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007616</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="7226" parent="7124" name="IDTIER">
+    <column id="7227" parent="7124" name="IDTIER">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7227" parent="7124" name="TIER_NAME">
+    <column id="7228" parent="7124" name="TIER_NAME">
       <Position>2</Position>
       <DataType>VARCHAR2(45 byte)|0s</DataType>
     </column>
-    <column id="7228" parent="7124" name="TIER_PRICE">
+    <column id="7229" parent="7124" name="TIER_PRICE">
       <Position>3</Position>
       <DataType>FLOAT(*)|0s</DataType>
     </column>
-    <index id="7229" parent="7124" name="SYS_C007612">
+    <index id="7230" parent="7124" name="SYS_C007612">
       <ObjectId>74608</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-18.20:14:20</CreatedTimestamp>
@@ -50376,7 +50380,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>IDTIER</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7230" parent="7124" name="SYS_C007612">
+    <key id="7231" parent="7124" name="SYS_C007612">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-18.20:14:20</ModifiedTimestamp>
       <ColNames>IDTIER</ColNames>
@@ -50384,49 +50388,49 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007612</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="7231" parent="7125" name="ID_USER">
+    <column id="7232" parent="7125" name="ID_USER">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
       <AutoInc>1</AutoInc>
     </column>
-    <column id="7232" parent="7125" name="USERNAME">
+    <column id="7233" parent="7125" name="USERNAME">
       <Position>2</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7233" parent="7125" name="PASSWORD">
+    <column id="7234" parent="7125" name="PASSWORD">
       <Position>3</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7234" parent="7125" name="FIRST_NAME">
+    <column id="7235" parent="7125" name="FIRST_NAME">
       <Position>4</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7235" parent="7125" name="LAST_NAME">
+    <column id="7236" parent="7125" name="LAST_NAME">
       <Position>5</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7236" parent="7125" name="DATE_BIRTH">
+    <column id="7237" parent="7125" name="DATE_BIRTH">
       <Position>6</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7237" parent="7125" name="DATE_REGISTER">
+    <column id="7238" parent="7125" name="DATE_REGISTER">
       <Position>7</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7238" parent="7125" name="EMAIL">
+    <column id="7239" parent="7125" name="EMAIL">
       <Position>8</Position>
       <DataType>VARCHAR2(25 byte)|0s</DataType>
     </column>
-    <column id="7239" parent="7125" name="PATH_PHOTO">
+    <column id="7240" parent="7125" name="PATH_PHOTO">
       <Position>9</Position>
       <DataType>LONG|0s</DataType>
     </column>
-    <column id="7240" parent="7125" name="FK_IDROLE">
+    <column id="7241" parent="7125" name="FK_IDROLE">
       <Position>10</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <index id="7241" parent="7125" name="SYS_C007435">
+    <index id="7242" parent="7125" name="SYS_C007435">
       <ObjectId>74381</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-17.02:10:07</CreatedTimestamp>
@@ -50435,7 +50439,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>ID_USER</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7242" parent="7125" name="SYS_C007435">
+    <key id="7243" parent="7125" name="SYS_C007435">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-17.02:10:07</ModifiedTimestamp>
       <ColNames>ID_USER</ColNames>
@@ -50443,7 +50447,7 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007435</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7243" parent="7125" name="SYS_C007436">
+    <foreign-key id="7244" parent="7125" name="SYS_C007436">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-17.02:10:07</ModifiedTimestamp>
       <ColNames>FK_IDROLE</ColNames>
@@ -50451,7 +50455,7 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007418</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <trigger id="7244" parent="7125" name="REGISTER_USER">
+    <trigger id="7245" parent="7125" name="REGISTER_USER">
       <ObjectId>75443</ObjectId>
       <SourceTextLength>1015</SourceTextLength>
       <DependsOnIds>1754</DependsOnIds>
@@ -50460,28 +50464,28 @@ FK_IDPREDICTION</ColNames>
       <Events>I</Events>
       <Turn>before-row</Turn>
     </trigger>
-    <column id="7245" parent="7126" name="ID_WORKINGDAY">
+    <column id="7246" parent="7126" name="ID_WORKINGDAY">
       <Position>1</Position>
       <DataType>NUMBER(*)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="7246" parent="7126" name="START_DATE">
+    <column id="7247" parent="7126" name="START_DATE">
       <Position>2</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7247" parent="7126" name="FINISH_DATE">
+    <column id="7248" parent="7126" name="FINISH_DATE">
       <Position>3</Position>
       <DataType>DATE|0s</DataType>
     </column>
-    <column id="7248" parent="7126" name="FK_IDSEASON">
+    <column id="7249" parent="7126" name="FK_IDSEASON">
       <Position>4</Position>
       <DataType>NUMBER(*)|0s</DataType>
     </column>
-    <column id="7249" parent="7126" name="NAME">
+    <column id="7250" parent="7126" name="NAME">
       <Position>5</Position>
       <DataType>VARCHAR2(20 byte)|0s</DataType>
     </column>
-    <index id="7250" parent="7126" name="SYS_C007945">
+    <index id="7251" parent="7126" name="SYS_C007945">
       <ObjectId>75542</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-04-30.07:00:16</CreatedTimestamp>
@@ -50490,7 +50494,7 @@ FK_IDPREDICTION</ColNames>
       <ColNames>ID_WORKINGDAY</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="7251" parent="7126" name="SYS_C007945">
+    <key id="7252" parent="7126" name="SYS_C007945">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-30.07:00:16</ModifiedTimestamp>
       <ColNames>ID_WORKINGDAY</ColNames>
@@ -50498,7 +50502,7 @@ FK_IDPREDICTION</ColNames>
       <UnderlyingIndexName>SYS_C007945</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="7252" parent="7126" name="SYS_C007946">
+    <foreign-key id="7253" parent="7126" name="SYS_C007946">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2021-04-30.07:00:16</ModifiedTimestamp>
       <ColNames>FK_IDSEASON</ColNames>
@@ -50506,45 +50510,45 @@ FK_IDPREDICTION</ColNames>
       <RefKeyName>SYS_C007943</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <argument id="7253" parent="7127" name="NOMBRE">
+    <argument id="7254" parent="7127" name="NOMBRE">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7254" parent="7128" name="NOMBRE">
+    <argument id="7255" parent="7128" name="NOMBRE">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7255" parent="7128" name="VALORINCREMENTO">
+    <argument id="7256" parent="7128" name="VALORINCREMENTO">
       <Position>2</Position>
       <DataType>NUMBER|0s</DataType>
       <Defaulted>1</Defaulted>
     </argument>
-    <argument id="7256" parent="7129" name="V_TITULO">
+    <argument id="7257" parent="7129" name="V_TITULO">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7257" parent="7129" name="V_AUTOR">
+    <argument id="7258" parent="7129" name="V_AUTOR">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7258" parent="7129" name="V_EDITORIAL">
+    <argument id="7259" parent="7129" name="V_EDITORIAL">
       <Position>3</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7259" parent="7129" name="V_PRECIO">
+    <argument id="7260" parent="7129" name="V_PRECIO">
       <Position>4</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7260" parent="7130" name="V_CURSOR">
+    <argument id="7261" parent="7130" name="V_CURSOR">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>SYS_REFCURSOR|0s</DataType>
     </argument>
-    <argument id="7261" parent="7130" name="V_USERNAME">
+    <argument id="7262" parent="7130" name="V_USERNAME">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7262" parent="7130" name="V_PASSWORD">
+    <argument id="7263" parent="7130" name="V_PASSWORD">
       <Position>3</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
