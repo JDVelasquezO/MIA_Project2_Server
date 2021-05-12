@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e557b7cf-3111-46f9-8b31-49803bc1f633" name="Default Changelist" comment="get data Membership">
+      <change afterPath="$PROJECT_DIR$/models/modelBL.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/65f312f3-89d5-46f4-8d58-b9e34bfc6bbd/storage_v2/_src_/schema/TEST.kjwnAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/colorController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/colorController.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/eventsController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/eventsController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/predictionController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/predictionController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/sportController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/sportController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/teamController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/teamController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/color.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/color.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/sport.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/sport.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/fileUploadController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/fileUploadController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/season.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/season.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

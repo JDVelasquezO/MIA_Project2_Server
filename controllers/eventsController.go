@@ -29,16 +29,14 @@ func GetEvents(c *fiber.Ctx) error {
 		return nil
 	}
 
-	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, FK_IDTEAM, NAME_CLASSIFICATION, NAME_TEAM, " +
-		"NAME_SPORT, C3.NAME_COLOR, REAL_RES " +
+	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, PLAYER, NAME_CLASSIFICATION, " +
+		"NAME_SPORT, C3.NAME_COLOR, REAL_RESULT " +
 		"FROM EVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
-		"INNER JOIN EVENT_TEAM ET on EVENT.ID_EVENT = ET.FK_IDEVENT " +
-		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
-		"INNER JOIN TEAM T on T.IDTEAM = ET.FK_IDTEAM " +
-		"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
+		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EVENT.FK_IDCLASS " +
+		"INNER JOIN SPORT S2 on S2.ID_SPORT = EVENT.FK_IDSPORT " +
 		"INNER JOIN COLOR C3 on S2.FK_IDCOLOR = C3.ID_COLOR " +
-		"ORDER BY ID_EVENT, FK_IDTEAM"
+		"ORDER BY ID_EVENT"
 
 	rows, err := database.DB.Query(query)
 	if err != nil {
@@ -51,7 +49,6 @@ func GetEvents(c *fiber.Ctx) error {
 	var idEvent int
 	var dateGame string
 	var color string
-	var idTeam int
 	var nameTeam string
 	var nameClass string
 	var nameSport string
@@ -62,7 +59,7 @@ func GetEvents(c *fiber.Ctx) error {
 		var event models.Event
 		var team models.Team
 
-		err := rows.Scan(&idEvent, &dateGame, &color, &idTeam, &nameClass, &nameTeam,
+		err := rows.Scan(&idEvent, &dateGame, &color, &nameTeam, &nameClass,
 			&nameSport, &colorSport, &realRes)
 		if err != nil {
 			return err
@@ -71,7 +68,6 @@ func GetEvents(c *fiber.Ctx) error {
 		event.IdEvent = idEvent
 		event.Color = color
 		event.DateOfGame = dateGame
-		team.IdTeam = idTeam
 		team.NameTeam = nameTeam
 		team.Classification = nameClass
 		team.RealResult = realRes
@@ -150,7 +146,7 @@ func GetEvent(c *fiber.Ctx) error {
 			"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
 			"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
 			"INNER JOIN COLOR C3 on C3.ID_COLOR = S2.FK_IDCOLOR " +
-			"WHERE ID_EVENT = 7 " +
+			"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
 			"GROUP BY ET.FK_IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, " +
 			"NAME_TEAM, NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR"
 		event = executeQuery2(newQuery)

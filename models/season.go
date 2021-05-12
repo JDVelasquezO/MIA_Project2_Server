@@ -6,4 +6,6 @@ type Season struct {
 	QuantityBronze int
 	QuantitySilver int
 	QuantityGold   int
+	StartDate string
+	EndDate string
 }
