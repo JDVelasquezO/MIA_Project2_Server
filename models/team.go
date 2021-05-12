@@ -6,4 +6,5 @@ type Team struct {
 	Classification string
 	UserResult     int
 	RealResult    int
+	IdClass int
 }

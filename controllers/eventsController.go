@@ -117,38 +117,33 @@ func GetEvent(c *fiber.Ctx) error {
 		}
 	}
 
-	query := "SELECT DISTINCT ID_EVENT, DATE_OF_GAME, COLOR, ET.FK_IDTEAM, NAME_CLASSIFICATION, NAME_TEAM, " +
-		"USER_RESULT, REAL_RES, NAME_SPORT, C3.NAME_COLOR " +
+	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, NAME_CLASSIFICATION, PLAYER, " +
+		"USER_RESULT, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR " +
 		"FROM EVENT " +
-		"INNER JOIN PREDICTION_EVENT PE on EVENT.ID_EVENT = PE.FK_IDEVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
-		"INNER JOIN TEAM T on T.IDTEAM = PE.FK_IDTEAM " +
-		"INNER JOIN PREDICTION P on P.ID_PREDICTION = PE.FK_IDPREDICTION " +
-		"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
+		"INNER JOIN PREDICTION P on P.FK_IDEVENT = EVENT.ID_EVENT " +
+		"INNER JOIN SPORT S2 on S2.ID_SPORT = EVENT.FK_IDSPORT " +
 		"INNER JOIN COLOR C3 on C3.ID_COLOR = S2.FK_IDCOLOR " +
-		"INNER JOIN EVENT_TEAM ET on PE.FK_IDTEAM = ET.FK_IDTEAM " +
-		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
-		"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
+		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = P.FK_IDCLASS AND EVENT.FK_IDCLASS = C2.ID_CLASSIFICATION " +
+		"WHERE FK_IDEVENT = "+strconv.Itoa(paramIdEvent)+" " +
 		"AND FK_IDMEMBERSHIP = "+strconv.Itoa(idMembership)+" " +
-		"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, ET.FK_IDTEAM, " +
-		"NAME_CLASSIFICATION, NAME_TEAM, USER_RESULT, REAL_RES, NAME_SPORT, C3.NAME_COLOR"
+		"GROUP BY P.FK_IDCLASS, ID_EVENT, DATE_OF_GAME, COLOR, NAME_CLASSIFICATION, " +
+		"PLAYER, USER_RESULT, REAL_RESULT, NAME_SPORT, C3.NAME_COLOR"
 
 	var event models.Event
 	event = executeQuery(query)
 	if event.IdEvent == 0 {
 		// println("Entro aqui")
-		newQuery := "SELECT ET.FK_IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, NAME_TEAM, NAME_SPORT, " +
-			"NAME_CLASSIFICATION, C3.NAME_COLOR " +
+		newQuery := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, PLAYER, NAME_SPORT, " +
+			"FK_IDCLASS, NAME_CLASSIFICATION, C3.NAME_COLOR " +
 			"FROM EVENT " +
 			"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
-			"INNER JOIN EVENT_TEAM ET on EVENT.ID_EVENT = ET.FK_IDEVENT " +
-			"INNER JOIN TEAM T on T.IDTEAM = ET.FK_IDTEAM " +
-			"INNER JOIN SPORT S2 on S2.ID_SPORT = T.FK_IDSPORT " +
-			"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = ET.FK_IDCLASIFICATION " +
+			"INNER JOIN SPORT S2 on S2.ID_SPORT = EVENT.FK_IDSPORT " +
+			"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EVENT.FK_IDCLASS " +
 			"INNER JOIN COLOR C3 on C3.ID_COLOR = S2.FK_IDCOLOR " +
 			"WHERE ID_EVENT = "+strconv.Itoa(paramIdEvent)+" " +
-			"GROUP BY ET.FK_IDTEAM, ID_EVENT, DATE_OF_GAME, COLOR, " +
-			"NAME_TEAM, NAME_SPORT, NAME_CLASSIFICATION, C3.NAME_COLOR"
+			"GROUP BY ID_EVENT, DATE_OF_GAME, COLOR, " +
+			"PLAYER, NAME_SPORT, FK_IDCLASS, NAME_CLASSIFICATION, C3.NAME_COLOR"
 		event = executeQuery2(newQuery)
 	}
 
@@ -165,7 +160,6 @@ func executeQuery (query string) models.Event {
 	var idEvent int
 	var dateGame string
 	var color string
-	var idTeam int
 	var nameTeam string
 	var nameClass string
 	var nameSport string
@@ -176,7 +170,7 @@ func executeQuery (query string) models.Event {
 	var event models.Event
 	for rows.Next() {
 		var team models.Team
-		err := rows.Scan(&idEvent, &dateGame, &colorSport, &idTeam, &nameClass, &nameTeam,
+		err := rows.Scan(&idEvent, &dateGame, &colorSport, &nameClass, &nameTeam,
 			&userRes, &realRes, &nameSport, &color)
 		if err != nil {
 			println(err)
@@ -185,7 +179,6 @@ func executeQuery (query string) models.Event {
 		event.IdEvent = idEvent
 		event.Color = color
 		event.DateOfGame = dateGame
-		team.IdTeam = idTeam
 		team.NameTeam = nameTeam
 		team.Classification = nameClass
 		team.RealResult = realRes
@@ -207,8 +200,8 @@ func executeQuery2 (query string) models.Event {
 	var idEvent int
 	var dateGame string
 	var color string
-	var idTeam int
 	var nameTeam string
+	var idClass int
 	var nameClass string
 	var nameSport string
 	var colorSport string
@@ -216,18 +209,18 @@ func executeQuery2 (query string) models.Event {
 	var event models.Event
 	for rows.Next() {
 		var team models.Team
-		err := rows.Scan(&idTeam, &idEvent, &dateGame, &color, &nameTeam, &nameSport,
-			&nameClass, &colorSport)
+		err := rows.Scan(&idEvent, &dateGame, &color, &nameTeam, &nameSport,
+			&idClass, &nameClass, &colorSport)
 		if err != nil {
-			println(err)
+			println("Error", err.Error())
 		}
 
 		event.IdEvent = idEvent
 		event.Color = color
 		event.DateOfGame = dateGame
-		team.IdTeam = idTeam
 		team.NameTeam = nameTeam
 		team.Classification = nameClass
+		team.IdClass = idClass
 		event.NameSport = nameSport
 		event.ColorSport = colorSport
 		event.Teams = append(event.Teams, team)
