@@ -250,36 +250,29 @@ func PostEvent(c *fiber.Ctx) error {
 	}
 
 	// var event models.Event
-	idEvent += 1
+	newIdEvent := (idEvent + 2)/2
 	eventDate := data["dateEvent"]
-	fkIdWD := data["idWd"]
 	fkIdStatus := data["idStatus"]
+	fkIdWd := data["idWd"]
+	fkIDSport := data["idSport"]
+	fkIdClass1 := data["idClass1"]
+	fkIdClass2 := data["idClass2"]
+	player1 := data["player1"]
+	player2 := data["player2"]
 
 	// Insertar evento nuevo
-	query2 := "INSERT INTO EVENT (ID_EVENT, DATE_OF_GAME, FK_IDSTATUSEVENT, FK_IDWORKINGDAY) " +
-		"VALUES ("+strconv.Itoa(idEvent)+", TO_DATE('"+eventDate+"', 'YYYY/MM/DD HH24:MI:SS'), "+fkIdStatus+", "+fkIdWD+" )"
+	query2 := "INSERT ALL " +
+		"INTO EVENT (ID_EVENT, DATE_OF_GAME, FK_IDSTATUSEVENT, FK_IDWORKINGDAY, FK_IDSPORT, FK_IDCLASS, REAL_RESULT, PLAYER) " +
+		"VALUES ("+strconv.Itoa(newIdEvent)+", TO_DATE('"+eventDate+"', 'yyyy/mm/dd hh24:mi'), "+fkIdStatus+", " +
+		" "+fkIdWd+", "+fkIDSport+", "+fkIdClass1+", 0, '"+player1+"' ) " +
+		"INTO EVENT (ID_EVENT, DATE_OF_GAME, FK_IDSTATUSEVENT, FK_IDWORKINGDAY, FK_IDSPORT, FK_IDCLASS, REAL_RESULT, PLAYER) " +
+		"VALUES ("+strconv.Itoa(newIdEvent)+", TO_DATE('"+eventDate+"', 'yyyy/mm/dd hh24:mi'), "+fkIdStatus+", " +
+		" "+fkIdWd+", "+fkIDSport+", "+fkIdClass2+", 0, '"+player2+"' ) " +
+		"SELECT 1 FROM DUAL"
 
 	_, err := database.DB.Query(query2)
 	if err != nil {
-		println(err)
-		return err
-	}
-
-	// Insertar evento-equipo
-	fkIdTeam1 := data["idTeam1"]
-	fkIdTeam2 := data["idTeam2"]
-	fkIdClass1 := data["idClass1"]
-	fkIdClass2 := data["idClass2"]
-
-	query3 := "INSERT ALL " +
-		"INTO EVENT_TEAM (FK_IDEVENT, FK_IDTEAM, REAL_RES, FK_IDCLASIFICATION) " +
-		"VALUES ("+strconv.Itoa(idEvent)+", "+fkIdTeam1+", 0, "+fkIdClass1+") " +
-		"INTO EVENT_TEAM (FK_IDEVENT, FK_IDTEAM, REAL_RES, FK_IDCLASIFICATION) " +
-		"VALUES ("+strconv.Itoa(idEvent)+", "+fkIdTeam2+", 0, "+fkIdClass2+") " +
-		"SELECT 1 FROM DUAL"
-	_, err = database.DB.Query(query3)
-	if err != nil {
-		println(err)
+		println(err.Error())
 		return err
 	}
 
