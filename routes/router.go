@@ -41,6 +41,8 @@ func Setup(app *fiber.App) {
 	// Routes for sports
 	app.Get("/quinielas.io/getSports", controllers.GetSports)
 	app.Post("/quinielas.io/postSports", controllers.PostSport)
+	app.Put("/quinielas.io/putSports", controllers.PutSport)
+	app.Delete("/quinielas.io/delSports", controllers.DelSport)
 
 	// Routes for teams
 	app.Post("/quinielas.io/getTeamsById", controllers.GetTeamById)
