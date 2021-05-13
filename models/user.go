@@ -12,6 +12,7 @@ type User struct {
 	DateRegister string
 	PathPhoto string
 	IdRol int
+	IdMembership int
 }
 
 type Role struct {

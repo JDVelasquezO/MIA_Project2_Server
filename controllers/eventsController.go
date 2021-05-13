@@ -30,7 +30,7 @@ func GetEvents(c *fiber.Ctx) error {
 	}
 
 	query := "SELECT ID_EVENT, DATE_OF_GAME, COLOR, PLAYER, NAME_CLASSIFICATION, " +
-		"NAME_SPORT, C3.NAME_COLOR, REAL_RESULT " +
+		"NAME_SPORT, C3.COD_HEX, REAL_RESULT " +
 		"FROM EVENT " +
 		"INNER JOIN STATUS_EVENT SE on SE.IDSTATUSEVENT = EVENT.FK_IDSTATUSEVENT " +
 		"INNER JOIN CLASSIFICATION C2 on C2.ID_CLASSIFICATION = EVENT.FK_IDCLASS " +
@@ -179,10 +179,10 @@ func executeQuery (query string) models.Event {
 		event.IdEvent = idEvent
 		event.Color = color
 		event.DateOfGame = dateGame
-		team.NameTeam = nameTeam
-		team.Classification = nameClass
-		team.RealResult = realRes
-		team.UserResult = userRes
+			team.NameTeam = nameTeam
+			team.Classification = nameClass
+			team.RealResult = realRes
+			team.UserResult = userRes
 		event.NameSport = nameSport
 		event.ColorSport = colorSport
 		event.Teams = append(event.Teams, team)
