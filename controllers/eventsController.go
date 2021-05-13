@@ -280,3 +280,35 @@ func PostEvent(c *fiber.Ctx) error {
 		"msg": "success",
 	})
 }
+
+func UpdateResults (c *fiber.Ctx) error {
+	var data map[string]string
+	e := c.BodyParser(&data)
+	if e != nil {
+		return e
+	}
+
+	idEvent := data["idEvent"]
+	idClass1 := data["idClass1"]
+	idClass2 := data["idClass2"]
+	res1 := data["res1"]
+	res2 := data["res2"]
+	println(idClass2, idClass1, idEvent, res1, res2)
+
+	query := "UPDATE EVENT SET REAL_RESULT = "+res1+", FK_IDSTATUSEVENT = 2 " +
+		"WHERE ID_EVENT = "+idEvent+" AND FK_IDCLASS = "+idClass1+" "
+	query2 := "UPDATE EVENT SET REAL_RESULT = "+res2+", FK_IDSTATUSEVENT = 2 " +
+		"WHERE ID_EVENT = "+idEvent+" AND FK_IDCLASS = "+idClass2+" "
+
+	_, err := database.DB.Query(query)
+	_, err2 := database.DB.Query(query2)
+	if err != nil || err2 != nil {
+		println(err.Error())
+		println(err2.Error())
+		return err
+	}
+
+	return c.JSON(fiber.Map{
+		"msg": "success",
+	})
+}
