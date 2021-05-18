@@ -32,3 +32,23 @@ func GetWorkday (c *fiber.Ctx) error {
 
 	return c.JSON(workdays)
 }
+
+/*func PostWorkday (c *fiber.Ctx) error {
+	var data map[string]string // key: value
+	e := c.BodyParser(&data)
+	if e != nil {
+		return e
+	}
+
+	var startDate = data["startDate"]
+	var endDate = data["endDate"]
+	var idSeason = data["idSeason"]
+	idSeason += 1
+	query2 := "INSERT INTO SEASON (ID_SEASON, START_DATE, END_DATE, NAME) " +
+		"VALUES ("+strconv.Itoa(idSeason)+", TO_DATE('"+startDate+"', 'yyyy/mm/dd hh24:mi'), " +
+		" TO_DATE('"+endDate+"', 'yyyy/mm/dd hh24:mi'), '"+nameSeason+"' )"
+	_, err := database.DB.Query(query2)
+	if err != nil {
+		return err
+	}
+}*/

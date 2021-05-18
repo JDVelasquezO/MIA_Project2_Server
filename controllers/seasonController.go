@@ -9,6 +9,33 @@ import (
 	"strconv"
 )
 
+func GetSeasons (c *fiber.Ctx) error {
+	query := "SELECT ID_SEASON, NAME, START_DATE, END_DATE FROM SEASON"
+	rows, _ := database.DB.Query(query)
+
+	var seasons []models.Season
+	var season models.Season
+	var idSeason int
+	var nameSeason string
+	var startDate string
+	var endDate string
+	for rows.Next() {
+		err := rows.Scan(&idSeason, &nameSeason, &startDate, &endDate)
+		if err != nil {
+			println(err)
+			return err
+		}
+
+		season.IdSeason = idSeason
+		season.NameSeason = nameSeason
+		season.StartDate = startDate
+		season.EndDate = endDate
+		seasons = append(seasons, season)
+	}
+
+	return c.JSON(seasons)
+}
+
 func GetActualSeason (c *fiber.Ctx) error {
 	query := "SELECT SEASON.NAME, COUNT(*) Cantidad_Participantes, ( " +
 		"SELECT SUM(TIER_PRICE) " +
@@ -54,7 +81,8 @@ func GetActualSeason (c *fiber.Ctx) error {
 
 func GetParticipants (c *fiber.Ctx) error {
 	query := "SELECT ID_USER, USERNAME, ID_MEMBERSHIP FROM USERS " +
-		"INNER JOIN MEMBERSHIP M on USERS.ID_USER = M.FK_IDUSER"
+		"INNER JOIN MEMBERSHIP M on USERS.ID_USER = M.FK_IDUSER " +
+		"ORDER BY ID_USER"
 
 	rows, err := database.DB.Query(query)
 	if err != nil {
@@ -133,4 +161,38 @@ func GetEventsOfParticipant (c *fiber.Ctx) error {
 	}
 
 	return c.JSON(events)
+}
+
+func PostSeason (c *fiber.Ctx) error {
+	var data map[string]string // key: value
+	e := c.BodyParser(&data)
+	if e != nil {
+		return e
+	}
+
+	query := "SELECT COUNT(*) FROM SEASON"
+	rows, _ := database.DB.Query(query)
+	var idSeason int
+	for rows.Next() {
+		err := rows.Scan(&idSeason)
+		if err != nil {
+			return err
+		}
+	}
+
+	var startDate = data["startDate"]
+	var endDate = data["endDate"]
+	var nameSeason = data["nameSeason"]
+	idSeason += 1
+	query2 := "INSERT INTO SEASON (ID_SEASON, START_DATE, END_DATE, NAME) " +
+		"VALUES ("+strconv.Itoa(idSeason)+", TO_DATE('"+startDate+"', 'yyyy/mm/dd hh24:mi'), " +
+		" TO_DATE('"+endDate+"', 'yyyy/mm/dd hh24:mi'), '"+nameSeason+"' )"
+	_, err := database.DB.Query(query2)
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(fiber.Map{
+		"msg": "success",
+	})
 }
